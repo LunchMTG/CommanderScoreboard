@@ -34,6 +34,9 @@
             <Setter Property="FontSize" Value="26"/>
             <Setter Property="Foreground" Value="DarkOrange"/>
         </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
     </Page.Resources>
 
 
@@ -46,26 +49,27 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <GridView ItemsSource="{Binding Players}" SelectionMode="Single" SelectedItem="{Binding CurrentPlayer}" Grid.Row="0">
+        <GridView ItemsSource="{Binding Players}" SelectionMode="Single" SelectedItem="{Binding CurrentPlayer,Mode=TwoWay}" Grid.Row="0">
+
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Height="Auto">
                         <Viewbox  StretchDirection="DownOnly">
                             <TextBlock Text="{Binding Name}" Style="{StaticResource PlayerNameStyle}" />
                         </Viewbox>
                         <TextBlock Text="{Binding Life}" Style="{StaticResource PlayerNameStyle}" />
                         <TextBlock Text="{Binding Poison}" Style="{StaticResource PoisonCounterStyle}" />
                         <TextBlock Text="{Binding CommanderAdditionalCost}" Style="{StaticResource CommanderCostStyle}" />
-                        <ListView ItemsSource="{Binding CommanderDamage}">
-                            <ListView.ItemTemplate>
+                        <ListBox ItemsSource="{Binding CommanderDamage}" MinHeight="200">
+                            <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Key.Name}" />
-                                        <TextBlock Text="{Binding Value}" />
+                                        <TextBlock Text="{Binding DamageSource.Name}" />
+                                        <TextBlock Text="{Binding Amount}" />
                                     </StackPanel>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -84,22 +88,22 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}">Normal Damage</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}">Life Total</TextBlock>
                 <Border Grid.Column="0" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
-                        <Button>-5</Button>
-                        <Button>-1</Button>
+                        <Button Command="{Binding Minus5Life}">-5</Button>
+                        <Button Command="{Binding Minus1Life}">-1</Button>
                         <Button Command="{Binding Plus1Life}">+1</Button>
-                        <Button>+5</Button>
+                        <Button Command="{Binding Plus5Life}">+5</Button>
                     </StackPanel>
                 </Border>
                 <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource LabelStyle}">Poison Damage</TextBlock>
                 <Border Grid.Column="1" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
-                        <Button>
+                        <Button Command="{Binding RemovePoison}">
                             <TextBlock Style="{StaticResource PoisonCounterStyle}">-1</TextBlock>
                         </Button>
-                        <Button>
+                        <Button Command="{Binding AddPoison}">
                             <TextBlock Style="{StaticResource PoisonCounterStyle}">+1</TextBlock>
                         </Button>
                     </StackPanel>
@@ -107,16 +111,16 @@
                 <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource LabelStyle}">Recast Cost</TextBlock>
                 <Border Grid.Column="2" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
-                        <Button Foreground="Gold">-1</Button>
-                        <Button Foreground="Gold">+1</Button>
+                        <Button Foreground="Gold" Command="{Binding RemoveCost}">-2</Button>
+                        <Button Foreground="Gold" Command="{Binding AddCost}">+2</Button>
                     </StackPanel>
                 </Border>
                 <TextBlock Grid.Column="4" Grid.Row="0" Style="{StaticResource LabelStyle}">Commander Damage</TextBlock>
-                <Border Grid.Column="4" Grid.Row="1"> 
+                <Border Grid.Column="4" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
-                        <ComboBox ItemsSource="{Binding Players}" SelectedItem="{Binding CommanderDamageSource}" DisplayMemberPath="Name"/>
-                        <Button>-1</Button>
-                        <Button>+1</Button>
+                        <ComboBox ItemsSource="{Binding Players}" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name"/>
+                        <Button Command="{Binding UndoCommanderDamage}">-1</Button>
+                        <Button Command="{Binding SendCommanderDamage}">+1</Button>
                     </StackPanel>
                 </Border>
             </Grid>
