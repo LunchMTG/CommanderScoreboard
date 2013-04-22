@@ -1,12 +1,7 @@
 ﻿using MyToolkit.MVVM;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Windows.UI.Popups;
 
 namespace Commander_Scoreboard
 {
@@ -16,12 +11,12 @@ namespace Commander_Scoreboard
         {
             Players = new List<Player>
             {
-                new Player{ Name= "Owen", Life=40, Poison=0, CommanderAdditionalCost=0 },
-                new Player{ Name = "Carlos", Life=47, Poison=0, CommanderAdditionalCost=4},
-                new Player{ Name = "Judah", Life=38, Poison=0, CommanderAdditionalCost=2},
-                new Player{ Name = "Ross", Life=20, Poison=0, CommanderAdditionalCost=0},
-                new Player{ Name = "Merek", Life=17, Poison=0, CommanderAdditionalCost=6},
-                new Player{ Name = "Andy", Life=27, Poison=0, CommanderAdditionalCost=2}
+                new Player{ Name = "Owen", Life=40, Poison=0, CommanderAdditionalCost=0},
+                new Player{ Name = "Carlos", Life=40, Poison=0, CommanderAdditionalCost=0},
+                new Player{ Name = "Judah", Life=40, Poison=0, CommanderAdditionalCost=0},
+                new Player{ Name = "Ross", Life=40, Poison=0, CommanderAdditionalCost=0},
+                new Player{ Name = "Merek", Life=40, Poison=0, CommanderAdditionalCost=0},
+                new Player{ Name = "A guy with a very long name", Life=40, Poison=0, CommanderAdditionalCost=0}
             };
 
         }
