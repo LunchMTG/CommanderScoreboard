@@ -11,6 +11,8 @@ namespace Commander_Scoreboard
     {
         private Player _source;
 
+        public string DisplayText { get { return string.Format("{0}: {1}", DamageSource.Name, Amount); } }
+
         public Player DamageSource
         {
             get { return _source; }
