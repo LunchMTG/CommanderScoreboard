@@ -16,7 +16,6 @@ namespace Commander_Scoreboard
                 new Player{ Name = "Judah", Life=40, Poison=0, CommanderAdditionalCost=0},
                 new Player{ Name = "Ross", Life=40, Poison=0, CommanderAdditionalCost=0},
                 new Player{ Name = "Merek", Life=40, Poison=0, CommanderAdditionalCost=0},
-                new Player{ Name = "A guy with a very long name", Life=40, Poison=0, CommanderAdditionalCost=0}
             };
 
         }
@@ -57,7 +56,7 @@ namespace Commander_Scoreboard
                         CurrentPlayer.CommanderDamage.Add(new CommanderDamageItem { DamageSource = CommanderDamageSource, Amount = 0 });
 
                     CurrentPlayer.CommanderDamage.First(item => item.DamageSource == CommanderDamageSource).Amount++;
-
+                    CurrentPlayer.Life--;
                     CurrentPlayer.Refresh();
                 });
             }
