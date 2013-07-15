@@ -60,7 +60,7 @@
 
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid >
+                    <Grid Width="200">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>

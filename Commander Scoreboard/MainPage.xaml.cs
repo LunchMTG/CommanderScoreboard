@@ -146,10 +146,10 @@ namespace Commander_Scoreboard
         /// <param name="eventArgs">Event data describing the conditions that led to the event.</param>
         void onCommandsRequested(SettingsPane settingsPane, SettingsPaneCommandsRequestedEventArgs eventArgs)
         {
-            UICommandInvokedHandler handler = new UICommandInvokedHandler(onSettingsCommand);
+            //UICommandInvokedHandler handler = new UICommandInvokedHandler(onSettingsCommand);
 
-            SettingsCommand generalCommand = new SettingsCommand("PlayersId", "Manage Players", handler);
-            eventArgs.Request.ApplicationCommands.Add(generalCommand);
+            //SettingsCommand generalCommand = new SettingsCommand("PlayersId", "Manage Players", handler);
+            //eventArgs.Request.ApplicationCommands.Add(generalCommand);
         }
 
         /// <summary>

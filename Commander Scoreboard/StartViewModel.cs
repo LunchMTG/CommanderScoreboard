@@ -14,13 +14,12 @@ namespace Commander_Scoreboard
         public StartViewModel()
         {
             PlayerListCache.Load();
-            Players = PlayerListCache.Players;
         }
 
         public bool IsCommanderGame { get; set; }
-        public ObservableCollection<string> Players { get; set; }
+        public ObservableCollection<string> Players { get { return PlayerListCache.Players; } }
         public string NewPlayerName { get; set; }
-        public RelayCommand MakeNewPlayer { get { return new RelayCommand(() => { Players.Add(NewPlayerName); PlayerListCache.Save(); }); } }
+        public RelayCommand MakeNewPlayer { get { return new RelayCommand(() => { PlayerListCache.Players.Add(NewPlayerName); PlayerListCache.Save(); }); } }
 
     }
 }
