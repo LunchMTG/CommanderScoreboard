@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace Commander_Scoreboard
 {
     public static class PlayerListCache
     {
-        public static List<string> Players { get; set; }
+        public static ObservableCollection<string> Players { get; set; }
         public static void Save()
         {
             var settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
@@ -22,7 +23,15 @@ namespace Commander_Scoreboard
         }
         public static void Load()
         {
-            Players = ((string)Windows.Storage.ApplicationData.Current.RoamingSettings.Values["playerlist"]).Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            try
+            {
+                Players = new ObservableCollection<string>(((string)Windows.Storage.ApplicationData.Current.RoamingSettings.Values["playerlist"]).Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+            }
+            catch (NullReferenceException)
+            {
+                Players = new ObservableCollection<string>();
+                Save();
+            }
         }
     }
 }

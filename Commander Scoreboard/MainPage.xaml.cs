@@ -55,6 +55,7 @@ namespace Commander_Scoreboard
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            DataContext = e.Parameter;
             if (!this.isEventRegistered)
             {
                 // Listening for this event lets the app initialize the settings commands and pause its UI until the user closes the pane.

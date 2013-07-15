@@ -9,14 +9,14 @@ namespace Commander_Scoreboard
     {
         public Game()
         {
-            Players = new List<Player>
-            {
-                new Player{ Name = "Owen"},
-                new Player{ Name = "Carlos"},
-                new Player{ Name = "Judah"},
-                new Player{ Name = "Ross"},
-                new Player{ Name = "Scumbag Merek"}
-            };
+            Players = new List<Player>();
+            //{
+            //    new Player{ Name = "Owen"},
+            //    new Player{ Name = "Carlos"},
+            //    new Player{ Name = "Judah"},
+            //    new Player{ Name = "Ross"},
+            //    new Player{ Name = "Scumbag Merek"}
+            //};
 
         }
 

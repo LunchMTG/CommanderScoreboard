@@ -37,7 +37,10 @@ namespace Commander_Scoreboard
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            PlayerListCache.Load();
         }
+
+        private StartViewModel vm { get { return DataContext as StartViewModel; } }
 
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the
@@ -47,6 +50,36 @@ namespace Commander_Scoreboard
         /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
+            PlayerListCache.Save();
+        }
+
+        private void DeletePlayers(object sender, TappedRoutedEventArgs e)
+        {
+            foreach (string player in playerPicker.SelectedItems)
+                vm.Players.Remove(player);
+        }
+
+        private void StartCommanderGame(object sender, TappedRoutedEventArgs e)
+        {
+
+
+            StartNewGame(true);
+        }
+
+        private void StartNewGame(bool isCommander)
+        {
+            var game = new Game();
+            game.IsCommanderGame = isCommander;
+
+            foreach (string player in playerPicker.SelectedItems)
+                game.Players.Add(new Player(isCommander) { Name = player });
+
+            Frame.Navigate(typeof(MainPage), game);
+        }
+
+        private void StartNotCommanderGame(object sender, TappedRoutedEventArgs e)
+        {
+            StartNewGame(false);
         }
     }
 }
