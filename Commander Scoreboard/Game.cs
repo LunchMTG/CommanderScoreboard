@@ -11,11 +11,11 @@ namespace Commander_Scoreboard
         {
             Players = new List<Player>
             {
-                new Player{ Name = "Owen", Life=40, Poison=0, CommanderAdditionalCost=0},
-                new Player{ Name = "Carlos", Life=40, Poison=0, CommanderAdditionalCost=0},
-                new Player{ Name = "Judah", Life=40, Poison=0, CommanderAdditionalCost=0},
-                new Player{ Name = "Ross", Life=40, Poison=0, CommanderAdditionalCost=0},
-                new Player{ Name = "Merek", Life=40, Poison=0, CommanderAdditionalCost=0},
+                new Player{ Name = "Owen"},
+                new Player{ Name = "Carlos"},
+                new Player{ Name = "Judah"},
+                new Player{ Name = "Ross"},
+                new Player{ Name = "Scumbag Merek"}
             };
 
         }

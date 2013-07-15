@@ -8,6 +8,8 @@
     mc:Ignorable="d" Background="Black">
 
     <Page.Resources>
+        
+        
         <Style x:Key="PlayerNameStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="72"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -35,6 +37,8 @@
             <Setter Property="Foreground" Value="DarkOrange"/>
         </Style>
         <Style x:Key="CommanderDetailStyle" TargetType="TextBlock" BasedOn="{StaticResource PoisonCounterStyle}">
+            <Setter Property="FontSize" Value="30"/>
+            
             <Setter Property="Foreground" Value="Red"/>
         </Style>
         <Style TargetType="ListBox">
@@ -56,23 +60,30 @@
 
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Height="Auto">
-                        <Viewbox  StretchDirection="DownOnly">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Viewbox  StretchDirection="DownOnly" Grid.Row="0">
                             <TextBlock Text="{Binding Name}" Style="{StaticResource PlayerNameStyle}" />
                         </Viewbox>
-                        <TextBlock Text="{Binding Life}" Style="{StaticResource PlayerNameStyle}" />
-                        <TextBlock Text="{Binding Poison}" Style="{StaticResource PoisonCounterStyle}" />
-                        <TextBlock Text="{Binding CommanderAdditionalCost}" Style="{StaticResource CommanderCostStyle}" />
-                        <ListBox ItemsSource="{Binding CommanderDamage}" MinHeight="200">
-                            <ListBox.ItemTemplate>
+                        <TextBlock Text="{Binding LifeText}" Style="{StaticResource PlayerNameStyle}" Grid.Row="1" />
+                        <TextBlock Text="{Binding PoisonText}" Style="{StaticResource PoisonCounterStyle}" Grid.Row="2"/>
+                        <TextBlock Text="{Binding CommanderAdditionalCostText}" Style="{StaticResource CommanderCostStyle}" Grid.Row="3" Visibility="{Binding ShowCommanderControls}"/>
+                        <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" MinHeight="250" Visibility="{Binding ShowCommanderControls}">
+                            <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Viewbox>
-                                        <TextBlock Style="{StaticResource CommanderDetailStyle}" Text="{Binding DisplayText}" />
+                                    <Viewbox StretchDirection="DownOnly" Height="45">
+                                        <TextBlock Style="{StaticResource CommanderDetailStyle}"  Text="{Binding DisplayText}" />
                                     </Viewbox>
                                 </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

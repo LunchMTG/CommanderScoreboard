@@ -53,8 +53,10 @@ namespace Commander_Scoreboard
                 if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
-                }
+                    PlayerListCache.Load();
 
+                }
+                
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
@@ -64,13 +66,15 @@ namespace Commander_Scoreboard
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(MainPage), args.Arguments))
+                if (!rootFrame.Navigate(typeof(StartPage), args.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
                 }
             }
             // Ensure the current window is active
             Window.Current.Activate();
+
+            
         }
 
         /// <summary>
@@ -84,6 +88,7 @@ namespace Commander_Scoreboard
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
+            PlayerListCache.Save();
             deferral.Complete();
         }
     }
