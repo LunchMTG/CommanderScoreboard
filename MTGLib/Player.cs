@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using Windows.UI.Xaml;
 
 namespace Commander_Scoreboard
 {
@@ -35,6 +34,5 @@ namespace Commander_Scoreboard
         public event PropertyChangedEventHandler PropertyChanged;
 
         public bool IsCommanderGame { get; set; }
-        public Visibility ShowCommanderControls { get { return IsCommanderGame ? Visibility.Visible : Visibility.Collapsed; } }
     }
 }

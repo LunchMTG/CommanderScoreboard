@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MTGLib;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace Commander_Scoreboard
             PlayerListCache.Load();
         }
 
-        private StartViewModel vm { get { return DataContext as StartViewModel; } }
+        private PlayerList vm { get { return DataContext as PlayerList; } }
 
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the

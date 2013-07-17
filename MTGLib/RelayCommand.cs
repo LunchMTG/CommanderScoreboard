@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.ComponentModel;
 #else
 using System.Windows.Input;
+using System.ComponentModel;
 #endif
 
 namespace MyToolkit.MVVM
@@ -14,7 +15,7 @@ namespace MyToolkit.MVVM
 #if WINRT
 	public class RelayCommand : INotifyPropertyChanged, ICommand
 #else
-    public class RelayCommand : NotifyPropertyChanged<RelayCommand>, ICommand
+    public class RelayCommand : INotifyPropertyChanged, ICommand
 #endif
     {
         private readonly Action execute;
