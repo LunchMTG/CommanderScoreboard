@@ -11,7 +11,7 @@ namespace MiniCommanderScoreboard
     {
         string[] IPlayerNamesStore.Load()
         {
-            return new[] { "Owen", "Ross", "Adam", "Scumbag Merek" };
+            return new[] { "Owen", "Ross", "Adam", "Scumbag Merek", "Judah", "Jay", "Carlos" };
         }
 
         void IPlayerNamesStore.Save(IEnumerable<string> names)

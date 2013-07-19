@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace Commander_Scoreboard
+namespace MTGLib
 {
     public class Player :INotifyPropertyChanged
     {
@@ -22,7 +22,7 @@ namespace Commander_Scoreboard
         public int Poison { get; set; }
         public string PoisonText { get { return string.Format("☠ {0}", Poison); } }
         public int CommanderAdditionalCost { get; set; }
-        public string CommanderAdditionalCostText { get { return string.Format("ⓧ {0}", CommanderAdditionalCost); } }
+        public string CommanderText { get { return string.Format("ⓧ {0}", CommanderAdditionalCost); } }
         public ObservableCollection<CommanderDamageItem> CommanderDamage { get; set; }
 
         public void Refresh()

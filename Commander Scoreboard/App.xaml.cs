@@ -53,7 +53,6 @@ namespace Commander_Scoreboard
                 if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
-                    PlayerListCache.Load();
 
                 }
                 
@@ -88,7 +87,6 @@ namespace Commander_Scoreboard
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
-            PlayerListCache.Save();
             deferral.Complete();
         }
     }

@@ -11,9 +11,9 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    SupportedOrientations="Portrait" Orientation="Landscape"
     shell:SystemTray.IsVisible="True">
-    
+
     <!--<phone:PhoneApplicationPage.DataContext>
         <edh:PlayerList />
     </phone:PhoneApplicationPage.DataContext>-->
@@ -46,14 +46,14 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="COMMANDER SCOREBOARD" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="choose players" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="commander scoreboard" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="Who's Playing?" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox SelectionMode="Multiple" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged"></ListBox>
-            
+            <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged"/>
+
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
@@ -67,13 +67,14 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar >
-            <shell:ApplicationBarIconButton IconUri="Assets\Dark\favs.addto.png" Text="new Player"/>
-            <shell:ApplicationBarIconButton IconUri="Assets\Dark\CommanderSymbol.png" Text="EDH" />
-            <shell:ApplicationBarIconButton Text="Standard" IconUri="Assets\Dark\like.png" />
+            <shell:ApplicationBarIconButton Click="AddPlayer" IconUri="Assets\Dark\favs.addto.png" Text="new"/>
+            <shell:ApplicationBarIconButton Click="DeletePlayers" IconUri="Assets\Dark\delete.png" Text="remove"/>
+            <shell:ApplicationBarIconButton Click="StartCommanderGame" IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" />
+            <shell:ApplicationBarIconButton Click="StartStandardGame" Text="Standard" IconUri="Assets\Dark\like.png" />
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Rate"/>
-                <shell:ApplicationBarMenuItem Text="Send Feedback"/>
-                <shell:ApplicationBarMenuItem Text="Remove Advertisements"/>
+                <shell:ApplicationBarMenuItem Click="GotoRateInStore" Text="Rate"/>
+                <shell:ApplicationBarMenuItem Click="SendOwenAnEmail" Text="Send Feedback"/>
+                <shell:ApplicationBarMenuItem Click="GotoBuyInStore" Text="Remove Advertisements"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

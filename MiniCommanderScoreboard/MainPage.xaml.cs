@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using MiniCommanderScoreboard.Resources;
-using Commander_Scoreboard;
-using Ninject;
+﻿using Microsoft.Phone.Controls;
 using MTGLib;
+using Ninject;
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Windows.Controls;
+using Microsoft.Phone.Shell;
 
 namespace MiniCommanderScoreboard
 {
@@ -28,9 +23,59 @@ namespace MiniCommanderScoreboard
             //BuildLocalizedApplicationBar();
         }
 
+        private PlayerList vm { get { return DataContext as PlayerList; } }
+
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            (DataContext as PlayerList).Players = (sender as ListBox).SelectedItems;
+            (DataContext as PlayerList).Players = new System.Collections.ObjectModel.ObservableCollection<string>((sender as ListBox).SelectedItems.OfType<string>());
+        }
+
+        private void AddPlayer(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("AddPlayer.xaml"));
+        }
+
+        private void StartCommanderGame(object sender, EventArgs e)
+        {
+            var players = vm.Players.Select(name => new Player { Name = name }).ToList();
+
+            var game = new Game
+            {
+                IsCommanderGame = true,
+                Players = players
+            };
+            PhoneApplicationService.Current.State["game"] = game;
+            NavigationService.Navigate(new Uri("/Scoreboard.xaml", UriKind.Relative));
+
+        }
+
+        private void StartStandardGame(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GotoRateInStore(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SendOwenAnEmail(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GotoBuyInStore(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeletePlayers(object sender, EventArgs e)
+        {
+            foreach (string player in PlayerListBox.SelectedItems)
+            {
+                vm.AvailablePlayers.Remove(player);
+                vm.Players.Remove(player);
+            }
         }
 
         // Sample code for building a localized ApplicationBar

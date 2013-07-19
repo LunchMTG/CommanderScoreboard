@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Commander_Scoreboard
+namespace MTGLib
 {
     public class Game : INotifyPropertyChanged
     {
@@ -38,20 +38,22 @@ namespace Commander_Scoreboard
         public bool ArePoisonCountersEnabled { get; set; }
         public bool ShowCommands { get { return CurrentPlayer != null; } }
 
-        public RelayCommand Plus1Life { get { return new RelayCommand(() => { CurrentPlayer.Life++; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand Plus5Life { get { return new RelayCommand(() => { CurrentPlayer.Life += 5; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand Minus1Life { get { return new RelayCommand(() => { CurrentPlayer.Life--; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand Minus5Life { get { return new RelayCommand(() => { CurrentPlayer.Life -= 5; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand RemovePoison { get { return new RelayCommand(() => { CurrentPlayer.Poison--; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand AddPoison { get { return new RelayCommand(() => { CurrentPlayer.Poison++; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand AddCost { get { return new RelayCommand(() => { CurrentPlayer.CommanderAdditionalCost += 2; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand RemoveCost { get { return new RelayCommand(() => { CurrentPlayer.CommanderAdditionalCost -= 2; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand Plus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life++; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand Plus5Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life += 5; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand Minus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life--; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand Minus5Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life -= 5; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand RemovePoison { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Poison--; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand AddPoison { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Poison++; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand AddCost { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.CommanderAdditionalCost += 2; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand RemoveCost { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.CommanderAdditionalCost -= 2; CurrentPlayer.Refresh(); }); } }
         public RelayCommand SendCommanderDamage
         {
             get
             {
                 return new RelayCommand(() =>
                 {
+                    if (CurrentPlayer == null || CommanderDamageSource == null) return;
+
                     if (!CurrentPlayer.CommanderDamage.Any(item => item.DamageSource == CommanderDamageSource))
                         CurrentPlayer.CommanderDamage.Add(new CommanderDamageItem { DamageSource = CommanderDamageSource, Amount = 0 });
 
@@ -67,6 +69,8 @@ namespace Commander_Scoreboard
             {
                 return new RelayCommand(() =>
                 {
+                    if (CurrentPlayer == null || CommanderDamageSource == null) return;
+
                     if (!CurrentPlayer.CommanderDamage.Any(item => item.DamageSource == CommanderDamageSource))
                         CurrentPlayer.CommanderDamage.Add(new CommanderDamageItem { DamageSource = CommanderDamageSource, Amount = 0 });
 

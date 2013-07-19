@@ -5,13 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Commander_Scoreboard"
     xmlns:common="using:Commander_Scoreboard.Common"
+    xmlns:edh="using:MTGLib"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.DataContext>
-        <local:StartViewModel />
-    </Page.DataContext>
 
     <Page.Resources>
 
@@ -42,7 +40,7 @@
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
         <Grid Grid.Row="1">
-            <GridView ItemsSource="{Binding Players}" Name="playerPicker" CanReorderItems="True" CanDragItems="True" SelectionMode="Multiple" Margin="50">
+            <GridView ItemsSource="{Binding AvailablePlayers}" Name="playerPicker" CanReorderItems="True" CanDragItems="True" SelectionMode="Multiple" Margin="50">
                 <GridView.ItemTemplate>
                     <DataTemplate >
                         <Viewbox Width="200" Margin="20">
@@ -54,8 +52,8 @@
         </Grid>
         <!--<AppBar IsSticky="True" IsOpen="True" Grid.Row="2">-->
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <TextBox Text="{Binding NewPlayerName, Mode=TwoWay}" Margin="5" BorderBrush="White" Width="300"/>
-            <Button Content="New Player" Command="{Binding MakeNewPlayer}"/>
+            <TextBox Name="NewPlayerBox" Text="{Binding NewPlayerName, Mode=TwoWay}" Margin="5" BorderBrush="White" Width="300"/>
+            <Button Content="New Player" Tapped="NewPlayer"/>
             <Button Content="Delete Selected Players" Tapped="DeletePlayers" />
             <Button Content="New Commander Game" Tapped="StartCommanderGame"/>
             <Button Content="New Standard Game" Tapped="StartNotCommanderGame"/>

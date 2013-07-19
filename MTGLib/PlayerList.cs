@@ -6,17 +6,26 @@ using System.Text;
 
 namespace MTGLib
 {
-    public class PlayerList 
+    public class PlayerList
     {
         public PlayerList(IPlayerNamesStore namesPersister)
         {
+            this.namesPersister = namesPersister;
             AvailablePlayers = new ObservableCollection<string>(namesPersister.Load());
+            Players = new ObservableCollection<string>();
         }
 
         public ObservableCollection<string> AvailablePlayers { get; set; }
 
-        public System.Collections.IList Players { get; set; }
+        public ObservableCollection<string> Players { get; set; }
 
         public bool CanStartGame { get { return Players.Count > 1; } }
+
+        public void Save()
+        {
+            namesPersister.Save(AvailablePlayers.ToArray());
+        }
+
+        IPlayerNamesStore namesPersister { get; set; }
     }
 }

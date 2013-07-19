@@ -25,6 +25,7 @@ namespace Commander_Scoreboard
         public StartPage()
         {
             this.InitializeComponent();
+            DataContext = new PlayerList(new PlayerListCache());
         }
 
         /// <summary>
@@ -38,7 +39,6 @@ namespace Commander_Scoreboard
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
-            PlayerListCache.Load();
         }
 
         private PlayerList vm { get { return DataContext as PlayerList; } }
@@ -51,13 +51,12 @@ namespace Commander_Scoreboard
         /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
-            PlayerListCache.Save();
         }
 
         private void DeletePlayers(object sender, TappedRoutedEventArgs e)
         {
             foreach (string player in playerPicker.SelectedItems)
-                vm.Players.Remove(player);
+                vm.AvailablePlayers.Remove(player);
         }
 
         private void StartCommanderGame(object sender, TappedRoutedEventArgs e)
@@ -81,6 +80,12 @@ namespace Commander_Scoreboard
         private void StartNotCommanderGame(object sender, TappedRoutedEventArgs e)
         {
             StartNewGame(false);
+        }
+
+        private void NewPlayer(object sender, TappedRoutedEventArgs e)
+        {
+            vm.AvailablePlayers.Add(NewPlayerBox.Text);
+            vm.Save();
         }
     }
 }
