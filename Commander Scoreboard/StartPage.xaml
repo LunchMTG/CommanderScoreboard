@@ -14,7 +14,7 @@
     <Page.Resources>
 
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">EDH Scoreboard: Choose Players</x:String>
+        <x:String x:Key="AppName">Choose Players</x:String>
     </Page.Resources>
 
     <!--
@@ -40,7 +40,7 @@
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
         <Grid Grid.Row="1">
-            <GridView ItemsSource="{Binding AvailablePlayers}" Name="playerPicker" CanReorderItems="True" CanDragItems="True" SelectionMode="Multiple" Margin="50">
+            <GridView ItemsSource="{Binding AvailablePlayers}" Name="playerPicker" CanReorderItems="True" SelectionMode="Multiple" Margin="50">
                 <GridView.ItemTemplate>
                     <DataTemplate >
                         <Viewbox Width="200" Margin="20">
@@ -51,13 +51,15 @@
             </GridView>
         </Grid>
         <!--<AppBar IsSticky="True" IsOpen="True" Grid.Row="2">-->
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <TextBox Name="NewPlayerBox" Text="{Binding NewPlayerName, Mode=TwoWay}" Margin="5" BorderBrush="White" Width="300"/>
-            <Button Content="New Player" Tapped="NewPlayer"/>
-            <Button Content="Delete Selected Players" Tapped="DeletePlayers" />
-            <Button Content="New Commander Game" Tapped="StartCommanderGame"/>
-            <Button Content="New Standard Game" Tapped="StartNotCommanderGame"/>
-        </StackPanel>
+        <Viewbox Grid.Row="2">
+            <StackPanel Orientation="Horizontal" >
+                <TextBox Name="NewPlayerBox" Text="{Binding NewPlayerName, Mode=TwoWay}" Margin="5" BorderBrush="White" Width="300"/>
+                <Button Content="New Player" Tapped="NewPlayer"/>
+                <Button Content="Delete Selected Players" Tapped="DeletePlayers" />
+                <Button Content="New Commander Game" Tapped="StartCommanderGame"/>
+                <Button Content="New Standard Game" Tapped="StartNotCommanderGame"/>
+            </StackPanel>
+        </Viewbox>
 
         <!--</AppBar>-->
 

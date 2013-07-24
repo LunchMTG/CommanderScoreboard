@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="12472OwenJohnson.CommanderScoreboard" Publisher="CN=C99164FB-040C-425D-9886-4E0A8324C29B" Version="1.0.0.3" />
+  <Identity Name="12472OwenJohnson.CommanderScoreboard" Publisher="CN=C99164FB-040C-425D-9886-4E0A8324C29B" Version="1.0.0.4" />
   <Properties>
     <DisplayName>Commander Scoreboard</DisplayName>
     <PublisherDisplayName>Owen Johnson</PublisherDisplayName>
