@@ -18,6 +18,8 @@ namespace Commander_Scoreboard
         public ObservableCollection<string> Players { get; set; }
         public void Save(IEnumerable<string> names)
         {
+            if (!Windows.Storage.ApplicationData.Current.RoamingSettings.Containers.ContainsKey("GameSetup"))
+                Windows.Storage.ApplicationData.Current.RoamingSettings.CreateContainer("GameSetup", Windows.Storage.ApplicationDataCreateDisposition.Always);
             var settings = Windows.Storage.ApplicationData.Current.RoamingSettings.Containers["GameSetup"];
 
 
@@ -29,16 +31,9 @@ namespace Commander_Scoreboard
         }
         public string[] Load()
         {
-            try
-            {
-                return ((string)Windows.Storage.ApplicationData.Current.RoamingSettings.Containers["GameSetup"].Values["playerlist"]).Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToArray();
-            }
-            catch (NullReferenceException)
-            {
-
-                Save(new string[] { });
-                return new string[] { };
-            }
+            try { return ((string)Windows.Storage.ApplicationData.Current.RoamingSettings.Containers["GameSetup"].Values["playerlist"]).Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToArray(); }
+            catch { return new string[] { }; }
+            finally { Save(new string[] { }); }
         }
 
 
