@@ -12,7 +12,7 @@ namespace Commander_Scoreboard
     {
         public PlayerListCache()
         {
-            //Windows.Storage.ApplicationData.Current.RoamingSettings.CreateContainer("GameSetup", Windows.Storage.ApplicationDataCreateDisposition.Always);
+            Players = new ObservableCollection<string>();
         }
 
         public ObservableCollection<string> Players { get; set; }
@@ -32,8 +32,12 @@ namespace Commander_Scoreboard
         public string[] Load()
         {
             try { return ((string)Windows.Storage.ApplicationData.Current.RoamingSettings.Containers["GameSetup"].Values["playerlist"]).Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToArray(); }
-            catch { return new string[] { }; }
-            finally { Save(new string[] { }); }
+            catch
+            {
+                Save(new string[] { });
+                return new string[] { };
+            }
+
         }
 
 
