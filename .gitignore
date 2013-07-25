@@ -45,6 +45,8 @@ local.properties
 [Dd]ebug/
 [Rr]elease/
 AppPackages
+SubmissionInfo
+PerfLogs
 *_i.c
 *_p.c
 *.ilk
@@ -56,6 +58,7 @@ AppPackages
 *.pgd
 *.rsp
 *.sbr
+*.sap
 *.tlb
 *.tli
 *.tlh

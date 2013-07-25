@@ -9,7 +9,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Landscape" Orientation="Landscape"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     mc:Ignorable="d"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     shell:SystemTray.IsVisible="False">
@@ -30,7 +30,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ScrollViewer >
+            <Viewbox StretchDirection="Both">
                 <ListBox ItemsSource="{Binding Players}" SelectedItem="{Binding CurrentPlayer, Mode=TwoWay}" FontSize="36">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -57,7 +57,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </ScrollViewer>
+            </Viewbox>
         </Grid>
         <UserControl Grid.Row="2" FontSize="12">
             <Grid >

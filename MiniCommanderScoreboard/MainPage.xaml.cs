@@ -32,50 +32,64 @@ namespace MiniCommanderScoreboard
 
         private void AddPlayer(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("AddPlayer.xaml"));
+            //NavigationService.Navigate(new Uri("/AddPlayer.xaml",UriKind.Relative));
+            vm.AvailablePlayers.Add(NewPlayerBox.Text);
+            vm.Save();
         }
 
         private void StartCommanderGame(object sender, EventArgs e)
         {
-            var players = vm.Players.Select(name => new Player { Name = name }).ToList();
+            StartGame(true);
+        }
+
+        private void StartGame(bool isCommander)
+        {
+            var players = vm.Players.Select(name => new Player(isCommander) { Name = name }).ToList();
 
             var game = new Game
             {
-                IsCommanderGame = true,
+                IsCommanderGame = isCommander,
                 Players = new System.Collections.ObjectModel.ObservableCollection<Player>(players)
             };
             PhoneApplicationService.Current.State["game"] = game;
             NavigationService.Navigate(new Uri("/Scoreboard.xaml", UriKind.Relative));
-
         }
 
         private void StartStandardGame(object sender, EventArgs e)
         {
-
+            StartGame(false);
         }
 
         private void GotoRateInStore(object sender, EventArgs e)
         {
-
+            new Microsoft.Phone.Tasks.MarketplaceReviewTask().Show();
         }
 
         private void SendOwenAnEmail(object sender, EventArgs e)
         {
-
+            new Microsoft.Phone.Tasks.EmailComposeTask
+            {
+                To = "owenjohnson@outlook.com",
+                Subject = "Commander Scoreboard Mini",
+            }.Show();
         }
 
         private void GotoBuyInStore(object sender, EventArgs e)
         {
-
+            new Microsoft.Phone.Tasks.MarketplaceDetailTask().Show();
         }
 
         private void DeletePlayers(object sender, EventArgs e)
         {
-            foreach (string player in PlayerListBox.SelectedItems)
-            {
-                vm.AvailablePlayers.Remove(player);
-                vm.Players.Remove(player);
-            }
+            //PlayerListBox.SelectedItems.OfType<string>().Select(player => { vm.AvailablePlayers.Remove(player); vm.Players.Remove(player); return true; });
+            while (PlayerListBox.SelectedItems.Count > 0)
+                vm.AvailablePlayers.Remove((string)PlayerListBox.SelectedItems[0]);
+
+        }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            AddPlayer(sender, e);
         }
 
         // Sample code for building a localized ApplicationBar

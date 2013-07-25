@@ -9,6 +9,8 @@ namespace MTGLib
 {
     public class Player :INotifyPropertyChanged
     {
+        public Player() { } //For serialization
+
         public Player(bool isInCommanderGame = true)
         {
             Life = isInCommanderGame ? 40 : 20;
