@@ -101,7 +101,7 @@
                     </StackPanel>
                 </Border>
                 <TextBlock Grid.Column="4" Grid.Row="0" Margin="12,0" >Commander Damage</TextBlock>
-                <toolkit:ListPicker Grid.Column="3" Grid.Row="1" ItemsSource="{Binding Players}" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name" Height="60">
+                <toolkit:ListPicker ExpansionMode="FullScreenOnly" Grid.Column="3" Grid.Row="1" ItemsSource="{Binding Players}" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name" Height="60">
                     <toolkit:ListPicker.FullModeItemTemplate>
                         <DataTemplate>
                             <TextBlock FontSize="42" Text="{Binding Name}"/>
