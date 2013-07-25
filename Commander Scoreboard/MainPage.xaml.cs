@@ -180,5 +180,12 @@ namespace Commander_Scoreboard
         {
             Frame.GoBack();
         }
+
+        private void CoinFlip(object sender, RoutedEventArgs e)
+        {
+            var r = ((int)Math.Round(new Random().NextDouble())) == 0 ? "Tails" : "Heads";
+            new MessageDialog("Coin was flipped!", r).ShowAsync();
+
+        }
     }
 }
