@@ -61,7 +61,7 @@
             <RowDefinition Height="200" />
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="0">
-            <GridView ItemsSource="{Binding Players}" SelectionMode="Single" SelectedItem="{Binding CurrentPlayer,Mode=TwoWay}" CanDragItems="True" CanReorderItems="True" AllowDrop="True">
+            <GridView ItemsSource="{Binding Players}" SelectionMode="Single" SelectedItem="{Binding CurrentPlayer,Mode=TwoWay}" AllowDrop="True" CanReorderItems="True">
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>

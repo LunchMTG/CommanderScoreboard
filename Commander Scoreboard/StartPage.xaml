@@ -40,7 +40,7 @@
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
         <Grid Grid.Row="1">
-            <GridView ItemsSource="{Binding AvailablePlayers}" Name="playerPicker" CanReorderItems="True" SelectionMode="Multiple" Margin="50">
+            <GridView ItemsSource="{Binding AvailablePlayers}" Name="playerPicker" CanReorderItems="True" AllowDrop="True" SelectionMode="Multiple" Margin="50">
                 <GridView.ItemTemplate>
                     <DataTemplate >
                         <Viewbox Width="200" Margin="20">

@@ -42,7 +42,7 @@ namespace MiniCommanderScoreboard
             var game = new Game
             {
                 IsCommanderGame = true,
-                Players = players
+                Players = new System.Collections.ObjectModel.ObservableCollection<Player>(players)
             };
             PhoneApplicationService.Current.State["game"] = game;
             NavigationService.Navigate(new Uri("/Scoreboard.xaml", UriKind.Relative));
