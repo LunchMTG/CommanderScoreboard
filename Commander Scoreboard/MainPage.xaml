@@ -48,8 +48,19 @@
         </Style>
 
         <common:BooleanToVisibilityConverter x:Key="bool2Vis" />
+
+        <Style x:Key="BulletsAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+            <Setter Property="AutomationProperties.AutomationId" Value="BulletsAppBarButton" />
+            <Setter Property="AutomationProperties.Name" Value="New Game" />
+            <Setter Property="Content" Value="&#xE112;" />
+        </Style>
     </Page.Resources>
 
+    <Page.TopAppBar>
+        <AppBar>
+            <Button Style="{StaticResource BulletsAppBarButtonStyle}" Click="GoBack"/>
+        </AppBar>
+    </Page.TopAppBar>
 
     <Page.DataContext>
         <local:Game />

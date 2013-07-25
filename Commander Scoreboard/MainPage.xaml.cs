@@ -175,5 +175,10 @@ namespace Commander_Scoreboard
         {
             Window.Current.Activated -= OnWindowActivated;
         }
+
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
     }
 }
