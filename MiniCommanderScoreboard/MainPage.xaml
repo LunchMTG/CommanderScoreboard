@@ -63,7 +63,7 @@
             </Grid.ColumnDefinitions>
             <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="0" Grid.ColumnSpan="2"/>
             <TextBlock Text="Someone New?" Grid.Row="1" Margin="-36,0" />
-            <TextBox Name="NewPlayerBox" Grid.Row="2" Margin="-50,0, 0,0"/>
+            <TextBox Name="NewPlayerBox" Grid.Row="2" Margin="-50,0, 0,0" KeyDown="NewPlayerBox_KeyDown"/>
             <Button Grid.Row="2" Grid.Column="1" Content="Add" Click="Button_Click"/>
 
         </Grid>

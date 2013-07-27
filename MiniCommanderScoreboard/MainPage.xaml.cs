@@ -92,9 +92,14 @@ namespace MiniCommanderScoreboard
             AddPlayer(sender, e);
         }
 
-        private void Settings(object sender, EventArgs e)
+        private void NewPlayerBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                AddPlayer(sender, EventArgs.Empty);
+                NewPlayerBox.Text = string.Empty;
+                e.Handled = true;
+            }
         }
 
         // Sample code for building a localized ApplicationBar
