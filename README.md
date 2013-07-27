@@ -3,7 +3,7 @@ CommanderScoreboard
 
 A scoreboard for playing Commander/EDH Games in Magic: the Gathering for Windows 8 and Windows Phone 8.
 
-[Get Windows 8 Version](http://apps.microsoft.com/windows/app/commander-scoreboard/22e71ea1-46bd-4759-a18e-f5e9a37387d8)
+[![Get it in the Windows Store](http://i.msdn.microsoft.com/dynimg/IC671223.png)](http://apps.microsoft.com/windows/app/commander-scoreboard/22e71ea1-46bd-4759-a18e-f5e9a37387d8)
 
 [Get Windows Phone Version](http://www.windowsphone.com/s?appid=ced4d499-80ed-45d3-bd04-b0a975418499)
 
