@@ -53,7 +53,7 @@
         <!--<AppBar IsSticky="True" IsOpen="True" Grid.Row="2">-->
         <Viewbox Grid.Row="2">
             <StackPanel Orientation="Horizontal" >
-                <TextBox Name="NewPlayerBox" Text="{Binding NewPlayerName, Mode=TwoWay}" Margin="5" BorderBrush="White" Width="300"/>
+                <TextBox Name="NewPlayerBox" Text="{Binding NewPlayerName, Mode=TwoWay}" Margin="5" BorderBrush="White" Width="300" AcceptsReturn="False" KeyDown="NewPlayerBox_KeyDown"/>
                 <Button Content="New Player" Tapped="NewPlayer"/>
                 <Button Content="Delete Selected Players" Tapped="DeletePlayers" />
                 <Button Content="New Commander Game" Tapped="StartCommanderGame"/>

@@ -7,14 +7,13 @@ using System.Text;
 
 namespace MTGLib
 {
-    public class Player :INotifyPropertyChanged
+    public class Player : INotifyPropertyChanged
     {
         public Player() { } //For serialization
 
         public Player(bool isInCommanderGame = true)
         {
             Life = isInCommanderGame ? 40 : 20;
-            IsCommanderGame = isInCommanderGame;
             CommanderDamage = new ObservableCollection<CommanderDamageItem>();
         }
 
@@ -22,19 +21,34 @@ namespace MTGLib
         public int Life { get; set; }
         public string LifeText { get { return string.Format("❤ {0}", Life); } }
         public int Poison { get; set; }
+        public bool HasPoison { get { return Poison != 0; } }
         public string PoisonText { get { return string.Format("☠ {0}", Poison); } }
-        public int CommanderAdditionalCost { get; set; }
+
+        private int recastCost;
+
+        public int CommanderAdditionalCost
+        {
+            get { return recastCost; }
+            set { recastCost = value; Refresh(); }
+        }
+
         public string CommanderText { get { return string.Format("ⓧ {0}", CommanderAdditionalCost); } }
+
+        public bool HasCastedCommander
+        {
+            get { return CommanderAdditionalCost != 0; }
+        }
+
         public ObservableCollection<CommanderDamageItem> CommanderDamage { get; set; }
 
         public void Refresh()
         {
-            if (PropertyChanged!=null)
+            if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(""));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool IsCommanderGame { get; set; }
+        public bool IsCommanderGame { get { return CommanderAdditionalCost != 0 || CommanderDamage.Count != 0; } }
     }
 }

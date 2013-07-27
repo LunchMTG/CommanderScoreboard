@@ -20,7 +20,7 @@ namespace MiniCommanderScoreboard
                 using (var Reader = new StreamReader(new IsolatedStorageFileStream("scores", FileMode.Open, fileStorage)))
                 {
                     string textFile = Reader.ReadToEnd();
-                    return textFile.Split(';');
+                    return textFile.Split(';').Select(name => name.Trim()).ToArray();
                 }
             }
             catch (Exception)

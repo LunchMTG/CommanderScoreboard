@@ -57,6 +57,8 @@ namespace Commander_Scoreboard
         {
             foreach (string player in playerPicker.SelectedItems)
                 vm.AvailablePlayers.Remove(player);
+
+            vm.Save();
         }
 
         private void StartCommanderGame(object sender, TappedRoutedEventArgs e)
@@ -84,8 +86,23 @@ namespace Commander_Scoreboard
 
         private void NewPlayer(object sender, TappedRoutedEventArgs e)
         {
+            AddPlayer();
+        }
+
+        private void AddPlayer()
+        {
             vm.AvailablePlayers.Add(NewPlayerBox.Text);
             vm.Save();
+        }
+
+        private void NewPlayerBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                AddPlayer();
+                NewPlayerBox.Text = "";
+                e.Handled = true;
+            }
         }
     }
 }

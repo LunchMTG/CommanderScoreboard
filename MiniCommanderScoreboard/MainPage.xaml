@@ -51,7 +51,7 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="60,0,12,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
@@ -62,8 +62,9 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="0"/>
-            <TextBlock Text="Someone New?" Grid.Row="1" Margin="12,0"/>
-            <TextBox Name="NewPlayerBox" Grid.Row="2"/> <Button Grid.Row="2" Grid.Column="1" Content="Add" Click="Button_Click"/>
+            <TextBlock Text="Someone New?" Grid.Row="1" Margin="-36,0" />
+            <TextBox Name="NewPlayerBox" Grid.Row="2" Margin="-50,0, 0,0"/>
+            <Button Grid.Row="2" Grid.Column="1" Content="Add" Click="Button_Click"/>
 
         </Grid>
 
@@ -78,7 +79,7 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar >
-            <shell:ApplicationBarIconButton Click="AddPlayer" IconUri="Assets\Dark\favs.addto.png" Text="new"/>
+            <!--<shell:ApplicationBarIconButton Click="Settings" IconUri="Assets\Dark\feature.settings.png" Text="settings"/>-->
             <shell:ApplicationBarIconButton Click="DeletePlayers" IconUri="Assets\Dark\delete.png" Text="remove"/>
             <shell:ApplicationBarIconButton Click="StartCommanderGame" IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" />
             <shell:ApplicationBarIconButton Click="StartStandardGame" Text="Standard" IconUri="Assets\Dark\like.png" />

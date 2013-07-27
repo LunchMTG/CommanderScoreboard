@@ -70,9 +70,9 @@
         </AppBar>
     </Page.TopAppBar>
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <local:Game />
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid Background="#ff121212">
         <Grid.RowDefinitions>
@@ -100,9 +100,9 @@
                                 <TextBlock Text="{Binding Name}" Style="{StaticResource PlayerNameStyle}" />
                             </Viewbox>
                             <TextBlock Text="{Binding LifeText}" Style="{StaticResource PlayerNameStyle}" Grid.Row="1" />
-                            <TextBlock Text="{Binding PoisonText}" Style="{StaticResource PoisonCounterStyle}" Grid.Row="2"/>
-                            <TextBlock Text="{Binding CommanderText}" Style="{StaticResource CommanderCostStyle}" Grid.Row="3" Visibility="{Binding IsCommanderGame, Converter={StaticResource bool2Vis}}"/>
-                            <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" MinHeight="250" Visibility="{Binding IsCommanderGame, Converter={StaticResource bool2Vis}}">
+                            <TextBlock Text="{Binding PoisonText}" Style="{StaticResource PoisonCounterStyle}" Grid.Row="2" Visibility="{Binding HasPoison, Converter={StaticResource bool2Vis}}"/>
+                            <TextBlock Text="{Binding CommanderText}" Style="{StaticResource CommanderCostStyle}" Grid.Row="3" Visibility="{Binding HasCastedCommander, Converter={StaticResource bool2Vis}}"/>
+                            <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" Height="Auto" Visibility="{Binding IsCommanderGame, Converter={StaticResource bool2Vis}}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Viewbox StretchDirection="DownOnly" Height="65">

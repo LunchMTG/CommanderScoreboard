@@ -36,9 +36,17 @@ namespace MTGLib
         public Player CommanderDamageSource { get; set; }
 
         public bool IsCommanderGame { get; set; }
-                public bool ArePoisonCountersEnabled { get; set; }
         public bool ShowCommands { get { return CurrentPlayer != null; } }
         public bool ShowCommanderControls { get { return IsCommanderGame; } }
+
+        private bool _poisonEnabled;
+
+        public bool ShowPoisonControls
+        {
+            get { return _poisonEnabled; }
+            set { _poisonEnabled = value; NotifyChanged("ShowPoisonControls"); }
+        }
+
 
         public RelayCommand Plus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life++; CurrentPlayer.Refresh(); }); } }
         public RelayCommand Plus5Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life += 5; CurrentPlayer.Refresh(); }); } }
@@ -76,7 +84,12 @@ namespace MTGLib
                     if (!CurrentPlayer.CommanderDamage.Any(item => item.DamageSource == CommanderDamageSource))
                         CurrentPlayer.CommanderDamage.Add(new CommanderDamageItem { DamageSource = CommanderDamageSource, Amount = 0 });
 
-                    CurrentPlayer.CommanderDamage.First(item => item.DamageSource == CommanderDamageSource).Amount--;
+                    var damageCounter = CurrentPlayer.CommanderDamage.First(item => item.DamageSource == CommanderDamageSource);
+
+                    CurrentPlayer.Life++;
+                    damageCounter.Amount--;
+                    if (damageCounter.Amount == 0)
+                        CurrentPlayer.CommanderDamage.Remove(damageCounter);
 
                     CurrentPlayer.Refresh();
                 });

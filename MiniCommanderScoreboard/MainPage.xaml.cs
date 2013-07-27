@@ -92,6 +92,11 @@ namespace MiniCommanderScoreboard
             AddPlayer(sender, e);
         }
 
+        private void Settings(object sender, EventArgs e)
+        {
+            
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
