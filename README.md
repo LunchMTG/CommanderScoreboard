@@ -5,7 +5,7 @@ A scoreboard for playing Commander/EDH Games in Magic: the Gathering for Windows
 
 [![Get it in the Windows Store](http://i.msdn.microsoft.com/dynimg/IC671223.png)](http://apps.microsoft.com/windows/app/commander-scoreboard/22e71ea1-46bd-4759-a18e-f5e9a37387d8)
 
-[Get Windows Phone Version](http://www.windowsphone.com/s?appid=ced4d499-80ed-45d3-bd04-b0a975418499)
+[![Get Windows Phone Version](http://nokiatheone.files.wordpress.com/2013/06/download-from-windows-phone-store.png?w=258&h=67)](http://www.windowsphone.com/s?appid=ced4d499-80ed-45d3-bd04-b0a975418499)
 
 License
 =======
