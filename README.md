@@ -1,7 +1,7 @@
 CommanderScoreboard
 ===================
 
-A scoreboard for playing Commander/EDH Games in Magic: the Gathering for Windows 8 and Windows Phone 8.
+A scoreboard for playing Commander/EDH Games in Magic: the Gathering for Windows 8 and Windows Phone 8. It tracks Life, Poison, General Recast Cost, and Specific General Damage. It hides the stats you aren't using and displays everything you are on a huge scoreboard. Perfect for projecting on to the wall or on a tabletop touchscreen.
 
 [![Get it in the Windows Store](http://i.msdn.microsoft.com/dynimg/IC671223.png)](http://apps.microsoft.com/windows/app/commander-scoreboard/22e71ea1-46bd-4759-a18e-f5e9a37387d8)
 
