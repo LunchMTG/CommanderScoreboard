@@ -90,6 +90,7 @@ namespace MiniCommanderScoreboard
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             AddPlayer(sender, e);
+            NewPlayerBox.Text = string.Empty; ;
         }
 
         private void NewPlayerBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
