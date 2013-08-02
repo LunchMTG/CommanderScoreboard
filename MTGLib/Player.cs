@@ -24,6 +24,11 @@ namespace MTGLib
         public bool HasPoison { get { return Poison != 0; } }
         public string PoisonText { get { return string.Format("☠ {0}", Poison); } }
 
+        /// <summary>
+        /// I say probably because weird things happen in magic
+        /// </summary>
+        public bool IsProbablyDead { get { return Life < 1 || Poison >= 10 || CommanderDamage.Any(cdi => cdi.Amount >= 21); } }
+
         private int recastCost;
 
         public int CommanderAdditionalCost

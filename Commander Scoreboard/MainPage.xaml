@@ -111,6 +111,7 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
+                            <Border Background="#AA121212" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2Vis}}" Grid.RowSpan="5"/>
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>

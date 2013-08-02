@@ -78,21 +78,25 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="12">
-                                <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="{Binding LifeText}"/>
-                                <TextBlock Text="{Binding PoisonText}" Visibility="{Binding HasPoison, Converter={StaticResource bool2VisConverter}}"/>
-                                <TextBlock Text="{Binding CommanderText}" Visibility="{Binding HasCastedCommander, Converter={StaticResource bool2VisConverter}}"/>
-                                <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" Height="Auto" Visibility="{Binding IsCommanderGame, Converter={StaticResource bool2VisConverter}}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Viewbox StretchDirection="DownOnly" Height="45">
-                                                <TextBlock Text="{Binding DisplayText}" />
-                                            </Viewbox>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </StackPanel>
+                            <Grid>
+                                <StackPanel Margin="12">
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding LifeText}"/>
+                                    <TextBlock Text="{Binding PoisonText}" Visibility="{Binding HasPoison, Converter={StaticResource bool2VisConverter}}"/>
+                                    <TextBlock Text="{Binding CommanderText}" Visibility="{Binding HasCastedCommander, Converter={StaticResource bool2VisConverter}}"/>
+                                    <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" Height="Auto" Visibility="{Binding IsCommanderGame, Converter={StaticResource bool2VisConverter}}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Viewbox StretchDirection="DownOnly" Height="45">
+                                                    <TextBlock Text="{Binding DisplayText}" />
+                                                </Viewbox>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                                <Border Background="#AA000000" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" />
+
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
@@ -131,6 +135,8 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
+                            <Border Background="#AA000000" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.ColumnSpan="3" Grid.Row="3"/>
+
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
