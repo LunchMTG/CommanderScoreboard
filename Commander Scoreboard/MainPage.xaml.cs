@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System.Display;
 using Windows.UI.ApplicationSettings;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -56,6 +57,10 @@ namespace Commander_Scoreboard
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             DataContext = e.Parameter;
+
+            IdlePrevnter = new DisplayRequest();
+            IdlePrevnter.RequestActive();
+
             if (!this.isEventRegistered)
             {
                 // Listening for this event lets the app initialize the settings commands and pause its UI until the user closes the pane.
@@ -74,6 +79,7 @@ namespace Commander_Scoreboard
         {
             base.OnNavigatedFrom(e);
 
+
             // Added to make sure the event handler for CommandsRequested is cleaned up before other scenarios.
             if (this.isEventRegistered)
             {
@@ -83,6 +89,12 @@ namespace Commander_Scoreboard
 
             // Unregister the event that listens for events when the window size is updated.
             Window.Current.SizeChanged -= OnWindowSizeChanged;
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+            IdlePrevnter.RequestRelease();
         }
 
         /// <summary>
@@ -187,5 +199,7 @@ namespace Commander_Scoreboard
             new MessageDialog("Coin was flipped!", r).ShowAsync();
 
         }
+
+        public DisplayRequest IdlePrevnter { get; set; }
     }
 }
