@@ -15,8 +15,8 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Commander_Scoreboard.App">
-      <VisualElements DisplayName="Commander Scoreboard" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Commander Scoreboard" ForegroundText="dark" BackgroundColor="#336699" ToastCapable="false">
-        <DefaultTile ShowName="logoOnly" ShortName="Commander Scoreboard" />
+      <VisualElements DisplayName="Commander Scoreboard" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Commander Scoreboard" ForegroundText="light" BackgroundColor="#336699" ToastCapable="false">
+        <DefaultTile ShowName="logoOnly" ShortName="EDH Scoreboard" WideLogo="Assets\WideLogo.png" />
         <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#336699" />
         <InitialRotationPreference>
           <Rotation Preference="portrait" />
