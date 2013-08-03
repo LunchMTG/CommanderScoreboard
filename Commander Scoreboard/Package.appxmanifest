@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="12472OwenJohnson.CommanderScoreboard" Publisher="CN=C99164FB-040C-425D-9886-4E0A8324C29B" Version="2.0.0.5" />
+  <Identity Name="12472OwenJohnson.CommanderScoreboard" Publisher="CN=C99164FB-040C-425D-9886-4E0A8324C29B" Version="2.1.0.5" />
   <Properties>
     <DisplayName>Commander Scoreboard</DisplayName>
     <PublisherDisplayName>Owen Johnson</PublisherDisplayName>
@@ -16,9 +16,10 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Commander_Scoreboard.App">
       <VisualElements DisplayName="Commander Scoreboard" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Commander Scoreboard" ForegroundText="dark" BackgroundColor="#336699" ToastCapable="false">
-        <DefaultTile ShowName="noLogos" ShortName="Commander Scoreboard" />
+        <DefaultTile ShowName="logoOnly" ShortName="Commander Scoreboard" />
         <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#336699" />
         <InitialRotationPreference>
+          <Rotation Preference="portrait" />
           <Rotation Preference="landscape" />
           <Rotation Preference="landscapeFlipped" />
         </InitialRotationPreference>
