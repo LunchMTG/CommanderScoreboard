@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commander_Scoreboard.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Commander_Scoreboard
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : LayoutAwarePage
     {
         // A pointer back to the main page.  This is needed if you want to call methods in MainPage such
         // as NotifyUser()
@@ -78,7 +79,6 @@ namespace Commander_Scoreboard
         /// <param name="e">Event data describing the conditions that led to the event.</param>
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            base.OnNavigatedFrom(e);
 
 
             // Added to make sure the event handler for CommandsRequested is cleaned up before other scenarios.
@@ -111,11 +111,12 @@ namespace Commander_Scoreboard
                 case ApplicationViewState.Filled:
                 case ApplicationViewState.FullScreenLandscape:
                 case ApplicationViewState.FullScreenPortrait:
-                    VisualStateManager.GoToState(this, "Full", true);
-                    if (FullSB != null) FullSB.Begin();
+                    Full.Storyboard.Begin();    
+                //VisualStateManager.GoToState(this, "Full", true);
                     break;
                 case ApplicationViewState.Snapped:
-                    VisualStateManager.GoToState(this, "Snapped", true);
+                    Snapped.Storyboard.Begin();
+                    //VisualStateManager.GoToState(this, "Snapped", true);
                     break;
             }
         }
@@ -201,7 +202,7 @@ namespace Commander_Scoreboard
             Window.Current.Activated -= OnWindowActivated;
         }
 
-        private void GoBack(object sender, RoutedEventArgs e)
+        private void Previous(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
         }

@@ -399,12 +399,6 @@
         </Setter>
     </Style>
 
-    <Color x:Key="ItemSelectonColor">#FF336699</Color>
-
-    <SolidColorBrush x:Key="ListViewItemPlaceholderBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
-    <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
-    <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
-    <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource ItemSelectonColor}" />
 
     <!-- 
         Standard AppBarButton Styles for use with Button and ToggleButton
