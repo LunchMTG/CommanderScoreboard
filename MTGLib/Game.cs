@@ -47,7 +47,28 @@ namespace MTGLib
             set { _poisonEnabled = value; NotifyChanged("ShowPoisonControls"); }
         }
 
-
+        public RelayCommand Extort
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    foreach (var player in Players)
+                    {
+                        if (player == CurrentPlayer)
+                        {
+                            player.Life += Players.Count - 1;
+                            player.Refresh();
+                        }
+                        else
+                        {
+                            player.Life--;
+                            player.Refresh();
+                        }
+                    }
+                });
+            }
+        }
         public RelayCommand Plus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life++; CurrentPlayer.Refresh(); }); } }
         public RelayCommand Plus5Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life += 5; CurrentPlayer.Refresh(); }); } }
         public RelayCommand Minus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life--; CurrentPlayer.Refresh(); }); } }
