@@ -99,7 +99,8 @@ namespace Commander_Scoreboard
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                AddPlayer();
+                if (!string.IsNullOrWhiteSpace(NewPlayerBox.Text))
+                    AddPlayer();
                 NewPlayerBox.Text = "";
                 e.Handled = true;
             }
