@@ -7,6 +7,7 @@ using Windows.Foundation.Collections;
 using Windows.System.Display;
 using Windows.UI.ApplicationSettings;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -105,6 +106,18 @@ namespace Commander_Scoreboard
         void OnWindowSizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
         {
             windowBounds = Window.Current.Bounds;
+            switch (ApplicationView.Value)
+            {
+                case ApplicationViewState.Filled:
+                case ApplicationViewState.FullScreenLandscape:
+                case ApplicationViewState.FullScreenPortrait:
+                    VisualStateManager.GoToState(this, "Full", true);
+                    if (FullSB != null) FullSB.Begin();
+                    break;
+                case ApplicationViewState.Snapped:
+                    VisualStateManager.GoToState(this, "Snapped", true);
+                    break;
+            }
         }
 
         /// <summary>
@@ -193,11 +206,9 @@ namespace Commander_Scoreboard
             Frame.GoBack();
         }
 
-        private void CoinFlip(object sender, RoutedEventArgs e)
+        private async void CoinFlip(object sender, RoutedEventArgs e)
         {
-            var r = ((int)Math.Round(new Random().NextDouble())) == 0 ? "Tails" : "Heads";
-            new MessageDialog("Coin was flipped!", r).ShowAsync();
-
+            await new MessageDialog("Coin was flipped!", ((int)Math.Round(new Random().NextDouble())) == 0 ? "Tails" : "Heads").ShowAsync();
         }
 
         public DisplayRequest IdlePrevnter { get; set; }
