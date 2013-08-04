@@ -22,12 +22,9 @@ namespace Commander_Scoreboard
                 Windows.Storage.ApplicationData.Current.RoamingSettings.CreateContainer("GameSetup", Windows.Storage.ApplicationDataCreateDisposition.Always);
             var settings = Windows.Storage.ApplicationData.Current.RoamingSettings.Containers["GameSetup"];
 
-
             if (Players == null) return;
 
             settings.Values["playerlist"] = string.Join(",", names);
-
-            //await Windows.Storage.FileIO.WriteTextAsync(createdFile, writeThis);
         }
         public string[] Load()
         {
@@ -37,9 +34,6 @@ namespace Commander_Scoreboard
                 Save(new string[] { });
                 return new string[] { };
             }
-
         }
-
-
     }
 }
