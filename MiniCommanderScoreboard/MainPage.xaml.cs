@@ -52,7 +52,9 @@ namespace MiniCommanderScoreboard
                 Players = new System.Collections.ObjectModel.ObservableCollection<Player>(players)
             };
             PhoneApplicationService.Current.State["game"] = game;
-            NavigationService.Navigate(new Uri("/Scoreboard.xaml", UriKind.Relative));
+
+            if (game.Players.Any())
+                NavigationService.Navigate(new Uri("/Scoreboard.xaml", UriKind.Relative));
         }
 
         private void StartStandardGame(object sender, EventArgs e)

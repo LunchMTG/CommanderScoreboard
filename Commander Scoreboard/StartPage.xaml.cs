@@ -76,7 +76,8 @@ namespace Commander_Scoreboard
             foreach (string player in playerPicker.SelectedItems)
                 game.Players.Add(new Player(isCommander) { Name = player });
 
-            Frame.Navigate(typeof(MainPage), game);
+            if (game.Players.Any())
+                Frame.Navigate(typeof(MainPage), game);
         }
 
         private void StartNotCommanderGame(object sender, TappedRoutedEventArgs e)
