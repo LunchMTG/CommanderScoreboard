@@ -12,7 +12,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="PortraitOrLandscape" Orientation="Landscape" OrientationChanged="PhoneApplicationPage_OrientationChanged"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait" OrientationChanged="PhoneApplicationPage_OrientationChanged"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="False">
 
@@ -94,8 +94,7 @@
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                 </StackPanel>
-                                <Border Background="#AA000000" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" />
-
+                                <Border Background="#AA000000" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.RowSpan="2" Grid.ColumnSpan="2" />
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -135,7 +134,7 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <Border Background="#AA000000" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.ColumnSpan="3" Grid.Row="3"/>
+                            <Border Background="#AA000000" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
 
                         </Grid>
                     </DataTemplate>
@@ -215,7 +214,7 @@
         </UserControl>
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar  Mode="Minimized">
+        <shell:ApplicationBar  >
             <!--<shell:ApplicationBarIconButton Click="Settings" IconUri="Assets\Dark\feature.settings.png" Text="settings"/>-->
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Click="ApplicationBarMenuItem_Click" Text="Toggle Poison Buttons"/>
