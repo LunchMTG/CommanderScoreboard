@@ -1,4 +1,5 @@
 ﻿using Commander_Scoreboard.Common;
+using MTGLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,6 +45,22 @@ namespace Commander_Scoreboard
         public MainPage()
         {
             this.InitializeComponent();
+
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+            {
+                DataContext = new Game
+                {
+                    IsCommanderGame = true,
+                    Players = new System.Collections.ObjectModel.ObservableCollection<Player>()
+                    { 
+                        new Player (true){Name = "Owen"},
+                        new Player(true){Name= "Adam"},
+                        new Player(true){Name= "Judah"},
+                        new Player(true) {Name="Ross"}
+
+                    }
+                };
+            }
 
             windowBounds = Window.Current.Bounds;
 
@@ -111,8 +128,8 @@ namespace Commander_Scoreboard
                 case ApplicationViewState.Filled:
                 case ApplicationViewState.FullScreenLandscape:
                 case ApplicationViewState.FullScreenPortrait:
-                    Full.Storyboard.Begin();    
-                //VisualStateManager.GoToState(this, "Full", true);
+                    Full.Storyboard.Begin();
+                    //VisualStateManager.GoToState(this, "Full", true);
                     break;
                 case ApplicationViewState.Snapped:
                     Snapped.Storyboard.Begin();

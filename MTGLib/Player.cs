@@ -14,6 +14,7 @@ namespace MTGLib
         public Player(bool isInCommanderGame = true)
         {
             Life = isInCommanderGame ? 40 : 20;
+            IsCommanderGame = isInCommanderGame;
             CommanderDamage = new ObservableCollection<CommanderDamageItem>();
         }
 
@@ -54,6 +55,6 @@ namespace MTGLib
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool IsCommanderGame { get { return CommanderAdditionalCost != 0 || CommanderDamage.Count != 0; } }
+        public bool IsCommanderGame { get; set; }//{ get { return CommanderAdditionalCost != 0 || CommanderDamage.Count != 0; } }
     }
 }

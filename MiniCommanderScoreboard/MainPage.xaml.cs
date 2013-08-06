@@ -33,7 +33,8 @@ namespace MiniCommanderScoreboard
         private void AddPlayer(object sender, EventArgs e)
         {
             //NavigationService.Navigate(new Uri("/AddPlayer.xaml",UriKind.Relative));
-            vm.AvailablePlayers.Add(NewPlayerBox.Text);
+            if (!string.IsNullOrWhiteSpace(NewPlayerBox.Text))
+                vm.AvailablePlayers.Add(NewPlayerBox.Text);
             vm.Save();
         }
 

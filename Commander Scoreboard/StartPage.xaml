@@ -53,17 +53,15 @@
         </Grid>
         <TextBlock  Grid.Row="1" Style="{StaticResource GridViewHeader}" Margin="75,12,12,12">Players</TextBlock>
         <GridView ItemsSource="{Binding AvailablePlayers}" Name="playerPicker" CanReorderItems="True" AllowDrop="True" SelectionMode="Multiple" Grid.Row="2" Margin="100,0,0,0" >
-            <GridView.ItemsPanel>
+            <!--<GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VariableSizedWrapGrid Orientation="Horizontal"></VariableSizedWrapGrid>
                 </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
+            </GridView.ItemsPanel>-->
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Border>
-                        <Viewbox Width="300" Height="100">
-                            <TextBlock FontSize="36" Text="{Binding}" />
-                        </Viewbox>
+                    <Border BorderBrush="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}"  BorderThickness="3">
+                        <TextBlock FontSize="56" Text="{Binding}" HorizontalAlignment="Left" Width="300" Margin="5"/>
                     </Border>
                 </DataTemplate>
             </GridView.ItemTemplate>

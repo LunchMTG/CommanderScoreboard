@@ -92,7 +92,8 @@ namespace Commander_Scoreboard
 
         private void AddPlayer()
         {
-            vm.AvailablePlayers.Add(NewPlayerBox.Text);
+            if (!string.IsNullOrWhiteSpace(NewPlayerBox.Text))
+                vm.AvailablePlayers.Add(NewPlayerBox.Text);
             vm.Save();
         }
 
@@ -100,8 +101,8 @@ namespace Commander_Scoreboard
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                if (!string.IsNullOrWhiteSpace(NewPlayerBox.Text))
-                    AddPlayer();
+
+                AddPlayer();
                 NewPlayerBox.Text = "";
                 e.Handled = true;
             }

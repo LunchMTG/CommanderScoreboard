@@ -71,7 +71,14 @@ namespace MiniCommanderScoreboard
         private void ApplicationBarMenuItem_Click_1(object sender, EventArgs e)
         {
             var vm = DataContext as Game;
-            DataContext = new Game { IsCommanderGame = vm.IsCommanderGame, Players = new System.Collections.ObjectModel.ObservableCollection<Player>(vm.Players.Select(player => new Player(vm.IsCommanderGame) { Name = player.Name })) };
+            foreach (var player in vm.Players)
+            {
+                player.Poison = 0;
+                player.CommanderAdditionalCost = 0;
+                player.CommanderDamage.Clear();
+                player.Life = player.IsCommanderGame ? 40 : 20;
+                player.Refresh();
+            }
         }
     }
 }
