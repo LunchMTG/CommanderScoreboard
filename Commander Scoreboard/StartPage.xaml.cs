@@ -70,7 +70,8 @@ namespace Commander_Scoreboard
 
         private void DeletePlayers(object sender, TappedRoutedEventArgs e)
         {
-            foreach (string player in playerPicker.SelectedItems)
+            var removes = playerPicker.SelectedItems.ToArray();
+            foreach (string player in removes)
                 vm.AvailablePlayers.Remove(player);
 
             vm.Save();

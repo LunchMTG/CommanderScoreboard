@@ -88,7 +88,7 @@
             </GridView.ItemsPanel>-->
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}"  BorderThickness="3">
+                    <Border  BorderThickness="3">
                         <TextBlock FontSize="56" Text="{Binding}" HorizontalAlignment="Left" Width="300" Margin="5"/>
                     </Border>
                 </DataTemplate>
