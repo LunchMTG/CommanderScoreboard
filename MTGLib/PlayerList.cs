@@ -16,7 +16,7 @@ namespace MTGLib
         }
 
         public ObservableCollection<string> AvailablePlayers { get; set; }
-
+        
         public ObservableCollection<string> Players { get; set; }
 
         public bool CanStartGame { get { return Players.Count > 1; } }
@@ -27,5 +27,8 @@ namespace MTGLib
         }
 
         IPlayerNamesStore namesPersister { get; set; }
+
+        public bool IsCommanderGame { get; set; }
+        public bool ShowPoisonControls { get; set; }
     }
 }

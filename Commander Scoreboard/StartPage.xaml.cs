@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Windows.ApplicationModel.Store;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -26,6 +27,20 @@ namespace Commander_Scoreboard
         {
             this.InitializeComponent();
             DataContext = new PlayerList(new PlayerListCache());
+
+#if DEBUG
+            if (CurrentApp.LicenseInformation.IsTrial)
+                HideAds();
+#else
+            if (!CurrentApp.LicenseInformation.IsTrial)
+                HideAds();
+#endif
+        }
+
+        private void HideAds()
+        {
+            AdControl.Visibility = Visibility.Collapsed;
+            AdButton.Visibility = Visibility.Collapsed;
         }
 
         /// <summary>
@@ -72,6 +87,7 @@ namespace Commander_Scoreboard
         {
             var game = new Game();
             game.IsCommanderGame = isCommander;
+            game.ShowPoisonControls = vm.ShowPoisonControls;
 
             foreach (string player in playerPicker.SelectedItems)
                 game.Players.Add(new Player(isCommander) { Name = player });
@@ -106,6 +122,22 @@ namespace Commander_Scoreboard
                 NewPlayerBox.Text = "";
                 e.Handled = true;
             }
+        }
+
+        private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.WinRT.UI.AdErrorEventArgs e)
+        {
+            HideAds();
+        }
+
+        private async void AdButton_Click(object sender, RoutedEventArgs e)
+        {
+            string r = await CurrentApp.RequestAppPurchaseAsync(true);
+            HideAds();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StartNewGame(vm.IsCommanderGame);
         }
     }
 }
