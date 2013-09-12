@@ -12,7 +12,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait" OrientationChanged="PhoneApplicationPage_OrientationChanged"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Landscape" OrientationChanged="PhoneApplicationPage_OrientationChanged"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="False">
 
@@ -20,10 +20,28 @@
         <local:boolToVisConverter x:Key="bool2VisConverter"/>
         <Style x:Key="LabelStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
+            <!--<Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>-->
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="Width" Value="80"/>
+        </Style>
+
     </phone:PhoneApplicationPage.Resources>
+
+    <!--<phone:PhoneApplicationPage.DataContext>
+        <MTGLib:Game IsCommanderGame="True">
+            <MTGLib:Game.Players>
+                <MTGLib:Player Name="Owen" Life="12" ></MTGLib:Player>
+                <MTGLib:Player Name="Ross" Life="23" ></MTGLib:Player>
+                <MTGLib:Player Name="DeadGuy" Life="-3" ></MTGLib:Player>
+            </MTGLib:Game.Players>
+        </MTGLib:Game>
+    </phone:PhoneApplicationPage.DataContext>-->
 
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroup>
@@ -58,7 +76,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
@@ -134,7 +152,7 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <Border Background="#AA000000" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+                            <Border Background="#aa000000}" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
 
                         </Grid>
                     </DataTemplate>
@@ -152,31 +170,31 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Margin="12,0" Style="{StaticResource LabelStyle}">
 					<Run Text="Life Total"/>
                     </TextBlock>
                     <Border Grid.Column="0" Grid.Row="1">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Foreground="Red" Command="{Binding Minus5Life}" Content="-5"/>
-                            <Button Foreground="Red" Command="{Binding Minus1Life}" Content="-1"/>
-                            <Button Foreground="Red" Command="{Binding Plus1Life}" Content="+1"/>
-                            <Button Foreground="Red" Command="{Binding Plus5Life}" Content="+5"/>
+                        <StackPanel Orientation="Horizontal" Margin="20,0">
+                            <Button Command="{Binding Minus5Life}" Content="-5" />
+                            <Button Command="{Binding Minus1Life}" Content="-1" />
+                            <Button Command="{Binding Plus1Life}" Content="+1" />
+                            <Button Command="{Binding Plus5Life}" Content="+5" />
                         </StackPanel>
                     </Border>
                     <TextBlock Grid.Column="1" Grid.Row="0" Margin="12,0" Visibility="{Binding ShowPoisonControls, Converter={StaticResource bool2VisConverter}}" Style="{StaticResource LabelStyle}">
 					<Run Text="Poison" />
                     </TextBlock>
                     <Border Grid.Column="1" Grid.Row="1" Visibility="{Binding ShowPoisonControls, Converter={StaticResource bool2VisConverter}}">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Foreground="DarkGreen" Command="{Binding RemovePoison}">
+                        <StackPanel Orientation="Horizontal" Margin="20,0">
+                            <Button  Command="{Binding RemovePoison}">
                                 <TextBlock>
 								<Run Text="-1"/>
                                 </TextBlock>
                             </Button>
-                            <Button Foreground="DarkGreen" Command="{Binding AddPoison}">
+                            <Button  Command="{Binding AddPoison}">
                                 <TextBlock >
 								<Run Text="+1"/>
                                 </TextBlock>
@@ -187,15 +205,15 @@
 					<Run Text="Recast Cost"/>
                     </TextBlock>
                     <Border Grid.Column="2" Grid.Row="1" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Foreground="Gold" Command="{Binding RemoveCost}" Content="-2"/>
-                            <Button Foreground="Gold" Command="{Binding AddCost}" Content="+2"/>
+                        <StackPanel Orientation="Horizontal" Margin="20,0">
+                            <Button Command="{Binding RemoveCost}" Content="-2"/>
+                            <Button Command="{Binding AddCost}" Content="+2"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" Margin="12,0" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}" Style="{StaticResource LabelStyle}">
+                    <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" Margin="20,0" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}" Style="{StaticResource LabelStyle}">
 					<Run Text="Commander Damage"/>
                     </TextBlock>
-                    <toolkit:ListPicker ExpansionMode="FullScreenOnly" Grid.Column="3" Grid.Row="1" ItemsSource="{Binding Players}" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name" Height="60" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}" FullModeHeader="Who's Attacking?">
+                    <toolkit:ListPicker ExpansionMode="FullScreenOnly" Grid.Column="3" Grid.Row="1" ItemsSource="{Binding Players}" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name"  Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}" FullModeHeader="Who's Attacking?">
                         <toolkit:ListPicker.FullModeItemTemplate>
                             <DataTemplate>
                                 <TextBlock FontSize="42" Text="{Binding Name}"/>
@@ -205,8 +223,8 @@
                     <Border Grid.Column="4" Grid.Row="1" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}">
                         <StackPanel Orientation="Horizontal">
 
-                            <Button Foreground="{StaticResource PhoneAccentBrush}" Command="{Binding UndoCommanderDamage}" Content="-1"/>
-                            <Button Command="{Binding SendCommanderDamage}" Foreground="{StaticResource PhoneAccentBrush}" Content="+1"/>
+                            <Button  Command="{Binding UndoCommanderDamage}" Content="-1"/>
+                            <Button Command="{Binding SendCommanderDamage}"  Content="+1"/>
                         </StackPanel>
                     </Border>
                 </Grid>

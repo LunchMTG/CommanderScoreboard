@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace MTGLib
 {
+    [DataContract(IsReference = true)]
     public class Player : INotifyPropertyChanged
     {
-        public Player() { } //For serialization
+        public Player() { if (CommanderDamage == null) CommanderDamage = new ObservableCollection<CommanderDamageItem>(); } //For serialization
 
         public Player(bool isInCommanderGame = true)
         {
@@ -17,10 +19,12 @@ namespace MTGLib
             IsCommanderGame = isInCommanderGame;
             CommanderDamage = new ObservableCollection<CommanderDamageItem>();
         }
-
+        [DataMember]
         public string Name { get; set; }
+        [DataMember]
         public int Life { get; set; }
         public string LifeText { get { return string.Format("❤ {0}", Life); } }
+        [DataMember]
         public int Poison { get; set; }
         public bool HasPoison { get { return Poison != 0; } }
         public string PoisonText { get { return string.Format("☠ {0}", Poison); } }
@@ -32,6 +36,7 @@ namespace MTGLib
 
         private int recastCost;
 
+        [DataMember]
         public int CommanderAdditionalCost
         {
             get { return recastCost; }
