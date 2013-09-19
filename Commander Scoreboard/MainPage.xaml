@@ -8,24 +8,32 @@
     xmlns:common="using:Commander_Scoreboard.Common"
     mc:Ignorable="d" Background="Black">
     <Page.Resources>
+        <SolidColorBrush x:Key="ListViewItemPlaceholderBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+        <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="Transparent" />
+        <SolidColorBrush x:Key="ComboBoxItemSelectedBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
 
+        <SolidColorBrush x:Key="ListViewItemSelectedForegroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="Transparent" />
+        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource ItemSelectonColor}" />
 
         <Style x:Key="PlayerNameStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="72"/>
+            <Setter Property="Foreground" Value="#AA9966" />
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="#CC2014"/>
         </Style>
         <Style x:Key="PoisonCounterStyle" TargetType="TextBlock" BasedOn="{StaticResource PlayerNameStyle}">
-            <Setter Property="Foreground" Value="#FFA1B209" />
             <Setter Property="FontSize" Value="54"/>
         </Style>
         <Style x:Key="CommanderCostStyle" TargetType="TextBlock" BasedOn="{StaticResource PoisonCounterStyle}">
-            <Setter Property="Foreground" Value="Gold"/>
+            <!--<Setter Property="Foreground" Value="Gold"/>-->
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="54" />
+            <Setter Property="Background" Value="{StaticResource AppAccentColor}" />
             <Setter Property="Width" Value="100" />
-            <Setter Property="Foreground" Value="#FFFF2819"/>
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <!--<Setter Property="Foreground" Value="#FFFF2819"/>-->
         </Style>
         <Style TargetType="Border">
             <Setter Property="BorderBrush" Value="Gray"/>
@@ -40,7 +48,7 @@
         <Style x:Key="CommanderDetailStyle" TargetType="TextBlock" BasedOn="{StaticResource PoisonCounterStyle}">
             <Setter Property="FontSize" Value="30"/>
 
-            <Setter Property="Foreground" Value="#FFFF2819"/>
+            <!--<Setter Property="Foreground" Value="#FFFF2819"/>-->
         </Style>
         <Style TargetType="ListBox">
             <Setter Property="Background" Value="Transparent"/>
@@ -69,47 +77,8 @@
             </StackPanel>
         </AppBar>
     </Page.TopAppBar>
-
-    <!--<Page.DataContext>
-        <local:Game />
-    </Page.DataContext>-->
-    <Grid>
-        <!--<Grid Background="#ff121212" Name="SnappedGrid">
-            <Viewbox>
-                <ListBox ItemsSource="{Binding Players}" FontSize="45" Foreground="#ff336699" >
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel></StackPanel>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Viewbox>
-                                <Grid>
-                                    <StackPanel Margin="12">
-                                        <TextBlock Text="{Binding Name}"/>
-                                        <TextBlock Text="{Binding LifeText}"/>
-                                        <TextBlock Text="{Binding PoisonText}" Visibility="{Binding HasPoison, Converter={StaticResource bool2Vis}}"/>
-                                        <TextBlock Text="{Binding CommanderText}" Visibility="{Binding HasCastedCommander, Converter={StaticResource bool2Vis}}"/>
-                                        <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" Height="Auto" Visibility="{Binding IsCommanderGame, Converter={StaticResource bool2Vis}}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Viewbox StretchDirection="DownOnly" Height="45">
-                                                        <TextBlock Text="{Binding DisplayText}" />
-                                                    </Viewbox>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-                                    <Border Background="#AA121212" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2Vis}}" />
-                                </Grid>
-                            </Viewbox>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Viewbox>
-        </Grid>-->
-        <Grid Background="#ff121212" Name="FullGrid">
+    <Grid Background="#121212">
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="200" />
@@ -123,6 +92,7 @@
                     </GridView.ItemsPanel>
                     <GridView.ItemTemplate>
                         <DataTemplate>
+
                             <Grid Width="200" Margin="10,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -146,7 +116,7 @@
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
-                                <Border Background="#AA121212" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2Vis}}" Grid.RowSpan="5"/>
+                                <Border Background="#AA121212" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2Vis}}" Grid.RowSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </Grid>
                         </DataTemplate>
                     </GridView.ItemTemplate>
@@ -180,24 +150,24 @@
                         <Border Grid.Column="1" Grid.Row="1" Visibility="{Binding ShowPoisonControls,Converter={StaticResource bool2Vis}}">
                             <StackPanel Orientation="Horizontal">
                                 <Button Command="{Binding RemovePoison}">
-                                    <TextBlock Style="{StaticResource PoisonCounterStyle}">-1</TextBlock>
+                                    -1
                                 </Button>
                                 <Button Command="{Binding AddPoison}">
-                                    <TextBlock Style="{StaticResource PoisonCounterStyle}">+1</TextBlock>
+                                    +1
                                 </Button>
                             </StackPanel>
                         </Border>
                         <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource LabelStyle}" Visibility="{Binding ShowCommanderControls, Converter={StaticResource bool2Vis}}">Recast Cost</TextBlock>
                         <Border Grid.Column="2" Grid.Row="1" Visibility="{Binding ShowCommanderControls, Converter={StaticResource bool2Vis}}">
                             <StackPanel Orientation="Horizontal">
-                                <Button Foreground="Gold" Command="{Binding RemoveCost}">-2</Button>
-                                <Button Foreground="Gold" Command="{Binding AddCost}">+2</Button>
+                                <Button Command="{Binding RemoveCost}">-2</Button>
+                                <Button Command="{Binding AddCost}">+2</Button>
                             </StackPanel>
                         </Border>
                         <TextBlock Grid.Column="4" Grid.Row="0" Style="{StaticResource LabelStyle}" Visibility="{Binding ShowCommanderControls, Converter={StaticResource bool2Vis}}">Commander Damage</TextBlock>
                         <Border Grid.Column="4" Grid.Row="1" Visibility="{Binding ShowCommanderControls, Converter={StaticResource bool2Vis}}">
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox ItemsSource="{Binding Players}" MinWidth="200" Margin="5" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name"/>
+                                <ComboBox ItemsSource="{Binding Players}" MinWidth="200" Margin="5" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name"  RequestedTheme="Dark" FontSize="36"/>
                                 <Button Command="{Binding UndoCommanderDamage}">-1</Button>
                                 <Button Command="{Binding SendCommanderDamage}">+1</Button>
                             </StackPanel>

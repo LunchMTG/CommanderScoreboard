@@ -48,26 +48,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <VisualStateManager.VisualStateGroups>
-
-            <!-- Visual states reflect the application's view state -->
-            <VisualStateGroup x:Name="ApplicationViewStates">
-                <VisualState x:Name="FullScreenLandscape"/>
-                <VisualState x:Name="Filled"/>
-
-                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
-                <VisualState x:Name="FullScreenPortrait"/>
-
-                <!-- The back button and title have different styles when snapped -->
-                <VisualState x:Name="Snapped">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        
         <!-- Back button and page title -->
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -84,7 +65,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Border  BorderThickness="3">
-                        <Viewbox Width="300">
+                        <Viewbox Width="200">
                             <TextBlock Text="{Binding}" HorizontalAlignment="Left" Margin="5"/>
                         </Viewbox>
                     </Border>
@@ -112,12 +93,12 @@
 				KeyDown="NewPlayerBox_KeyDown" 
 				WatermarkText="Add a Friend"
 				Grid.Column="0"/>
-            <Button Content="Add" Command="{Binding AddPlayer}" Grid.Column="1" />
+            <Button Content="Add Friend" Command="{Binding AddPlayer}" Grid.Column="1" />
             <!--Have to do code behind cuz there is no dep prop for SelectedItems -->
             <Button Content="Delete Selected Players" Tapped="DeletePlayers" Grid.Column="2" />
         </Grid>
         <Button Content="New Game" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Click="Button_Click"/>
         <Button Content="Remove Ads" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Stretch" Name="AdButton" Click="AdButton_Click"/>
-        <UI:AdControl ApplicationId="291967cd-3993-4d64-b281-a468c7f3fee4" AdUnitId="10143691" Grid.Column="2" HorizontalAlignment="Left"   Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center"  Width="300" Height="600" ErrorOccurred="AdControl_ErrorOccurred" IsAutoRefreshEnabled="True" Name="AdControl" />
+        <UI:AdControl ApplicationId="291967cd-3993-4d64-b281-a468c7f3fee4" AdUnitId="10143691" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center"  Width="300" Height="600" ErrorOccurred="AdControl_ErrorOccurred" IsAutoRefreshEnabled="True" Name="AdControl" />
     </Grid>
 </Page>

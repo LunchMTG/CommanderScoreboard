@@ -94,7 +94,7 @@ namespace Commander_Scoreboard
 
         private async void AdButton_Click(object sender, RoutedEventArgs e)
         {
-            string r = await CurrentApp.RequestAppPurchaseAsync(true);
+            string r = await CurrentApp.RequestAppPurchaseAsync(false);
             HideAds();
         }
 
