@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:MTGLib="clr-namespace:MTGLib;assembly=MTGLib"
-    xmlns:local="clr-namespace:MiniCommanderScoreboard"
+    xmlns:local="clr-namespace:MiniCommanderScoreboard" x:Name="phoneApplicationPage"
     x:Class="MiniCommanderScoreboard.Scoreboard"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -31,7 +31,7 @@
             <Setter Property="FontWeight" Value="Black"/>
             <Setter Property="Width" Value="80"/>
         </Style>
-
+        <local:NegationConverter x:Key="NegationConverter"/>
     </phone:PhoneApplicationPage.Resources>
 
     <!--<phone:PhoneApplicationPage.DataContext>
@@ -80,11 +80,7 @@
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <!--<StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>-->
+
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanelVertical" Grid.Row="0" Margin="12,0,12,0">
@@ -113,7 +109,7 @@
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                 </StackPanel>
-                                <Border Background="#AA000000" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+                                <Border Background="{Binding Background, ElementName=phoneApplicationPage}" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.RowSpan="2" Grid.ColumnSpan="2" Opacity=".8" />
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -153,7 +149,7 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <Border Background="#aa000000}" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+                            <Border Background="{Binding Background, ElementName=phoneApplicationPage}" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2VisConverter}}" Grid.ColumnSpan="3" Grid.RowSpan="3" Opacity="0.8"/>
 
                         </Grid>
                     </DataTemplate>
