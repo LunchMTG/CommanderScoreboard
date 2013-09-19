@@ -32,8 +32,7 @@ namespace MTGLib
         /// <summary>
         /// I say probably because weird things happen in magic
         /// </summary>
-        public bool IsProbablyDead { get { return Life < 1 || Poison >= 10 || CommanderDamage.Any(cdi => cdi.Amount >= 21); } }
-
+        public bool IsProbablyDead { get { return Life < 1 || Poison >= 10 || CommanderDamage != null && CommanderDamage.Any(cdi => cdi.Amount >= 21); } }
         private int recastCost;
 
         [DataMember]
@@ -45,11 +44,13 @@ namespace MTGLib
 
         public string CommanderText { get { return string.Format("ⓧ {0}", CommanderAdditionalCost); } }
 
+
         public bool HasCastedCommander
         {
             get { return CommanderAdditionalCost != 0; }
         }
 
+        [DataMember]
         public ObservableCollection<CommanderDamageItem> CommanderDamage { get; set; }
 
         public void Refresh()
@@ -60,6 +61,7 @@ namespace MTGLib
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        [DataMember]
         public bool IsCommanderGame { get; set; }//{ get { return CommanderAdditionalCost != 0 || CommanderDamage.Count != 0; } }
     }
 }

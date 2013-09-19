@@ -29,13 +29,14 @@ namespace MiniCommanderScoreboard
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
+            //base.OnNavigatedTo(e);
             PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+            //DataContext = PhoneApplicationService.Current.State["game"];
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            base.OnNavigatingFrom(e);
+            //base.OnNavigatingFrom(e);
             PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Enabled;
         }
 
@@ -47,7 +48,7 @@ namespace MiniCommanderScoreboard
                 case PageOrientation.LandscapeLeft:
                 case PageOrientation.LandscapeRight:
                     Landscape.Storyboard.Begin();
-                    ApplicationBar.IsVisible = false;
+                    ApplicationBar.IsVisible = true;
                     break;
                 case PageOrientation.None:
                     break;

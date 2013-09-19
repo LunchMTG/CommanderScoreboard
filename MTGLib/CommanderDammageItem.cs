@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MTGLib
 {
-    [DataContract]
+    [DataContract(IsReference=true)]
     public class CommanderDamageItem : INotifyPropertyChanged
     {
         private Player _source;
@@ -15,6 +15,7 @@ namespace MTGLib
         public string DisplayText { get { return string.Format("{0}: {1}", DamageSource.Name, Amount); } }
 
 
+    [DataMember]
         public Player DamageSource
         {
             get { return _source; }
@@ -23,6 +24,7 @@ namespace MTGLib
 
         private int _amount;
 
+        [DataMember]
         public int Amount
         {
             get { return _amount; }
