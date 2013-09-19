@@ -15,7 +15,6 @@
     <PackageCertificateKeyFile>Commander Scoreboard_StoreKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <PackageCertificateThumbprint>0221F81F22332D13B48F89CB4D81DBAEFB3143A5</PackageCertificateThumbprint>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <AppxBundle>Never</AppxBundle>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
