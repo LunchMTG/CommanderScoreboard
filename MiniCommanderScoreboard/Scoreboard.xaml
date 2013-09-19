@@ -14,6 +14,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Landscape" OrientationChanged="PhoneApplicationPage_OrientationChanged"
     mc:Ignorable="d"
+    xmlns:appbar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
@@ -231,13 +232,17 @@
             </Viewbox>
         </UserControl>
     </Grid>
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar  >
+    <!--<phone:PhoneApplicationPage.ApplicationBar>-->
+    <appbar:Bindable.ApplicationBar  >
+        <appbar:BindableApplicationBar>
             <!--<shell:ApplicationBarIconButton Click="Settings" IconUri="Assets\Dark\feature.settings.png" Text="settings"/>-->
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Click="ApplicationBarMenuItem_Click" Text="Toggle Poison Buttons"/>
-                <shell:ApplicationBarMenuItem Click="ApplicationBarMenuItem_Click_1" Text="New Game"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
+            <appbar:BindableApplicationBar.MenuItems>
+                <appbar:BindableApplicationBarMenuItem Command="{Binding TogglePoisonControls}"  Text="Toggle Poison Buttons"/>
+                <appbar:BindableApplicationBarMenuItem Command="{Binding ResetGame}" Text="New Game"/>
+                <appbar:BindableApplicationBarMenuItem Command="{Binding Extort}" Text="Extort"/>
+            </appbar:BindableApplicationBar.MenuItems>
+        </appbar:BindableApplicationBar>
+
+    </appbar:Bindable.ApplicationBar>
+    <!--</phone:PhoneApplicationPage.ApplicationBar>-->
 </phone:PhoneApplicationPage>

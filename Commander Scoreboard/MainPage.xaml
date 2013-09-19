@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<Page
     x:Class="Commander_Scoreboard.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,23 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:Commander_Scoreboard.Common"
     mc:Ignorable="d" Background="Black">
-    <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup>
-            <VisualState x:Name="Full">
-                <Storyboard>
-                    <FadeInThemeAnimation TargetName="FullGrid" />
-                    <FadeOutThemeAnimation TargetName="SnappedGrid"/>
-                </Storyboard>
-            </VisualState>
-            <VisualState x:Name="Snapped">
-                <Storyboard>
-                    <FadeOutThemeAnimation Storyboard.TargetName="FullGrid" />
-                    <FadeInThemeAnimation Storyboard.TargetName="SnappedGrid"/>
-                </Storyboard>
-            </VisualState>
-        </VisualStateGroup>
-    </VisualStateManager.VisualStateGroups>
-
     <Page.Resources>
 
 
@@ -91,7 +74,7 @@
         <local:Game />
     </Page.DataContext>-->
     <Grid>
-        <Grid Background="#ff121212" Name="SnappedGrid">
+        <!--<Grid Background="#ff121212" Name="SnappedGrid">
             <Viewbox>
                 <ListBox ItemsSource="{Binding Players}" FontSize="45" Foreground="#ff336699" >
                     <ListBox.ItemsPanel>
@@ -125,7 +108,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Viewbox>
-        </Grid>
+        </Grid>-->
         <Grid Background="#ff121212" Name="FullGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -224,4 +207,4 @@
             </AppBar>
         </Grid>
     </Grid>
-</common:LayoutAwarePage>
+</Page>

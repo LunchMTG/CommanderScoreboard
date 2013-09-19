@@ -1,4 +1,4 @@
-﻿using MyToolkit.MVVM;
+﻿using MVVM;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -33,7 +33,9 @@ namespace MTGLib
                     PropertyChanged(this, new PropertyChangedEventArgs(property));
                 }
         }
-        public Player CommanderDamageSource { get; set; }
+
+        private Player _commanderSource;
+        public Player CommanderDamageSource { get { return _commanderSource ?? Players[0]; } set { _commanderSource = value; } }
 
         public bool IsCommanderGame { get; set; }
         public bool ShowCommands { get { return CurrentPlayer != null; } }
@@ -46,6 +48,8 @@ namespace MTGLib
             get { return _poisonEnabled; }
             set { _poisonEnabled = value; NotifyChanged("ShowPoisonControls"); }
         }
+
+        public RelayCommand TogglePoisonControls { get { return new RelayCommand(() => ShowPoisonControls = !ShowPoisonControls); } }
 
         public RelayCommand Extort
         {
@@ -116,6 +120,25 @@ namespace MTGLib
                 });
             }
         }
+
+        public RelayCommand ResetGame
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                    {
+                        foreach (var player in Players)
+                        {
+                            player.CommanderDamage.Clear();
+                            player.Poison = 0;
+                            player.CommanderAdditionalCost = 0;
+                            player.Life = player.IsCommanderGame ? 40 : 20;
+                            player.Refresh();
+                        }
+                    });
+        }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

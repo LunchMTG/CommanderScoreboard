@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<Page
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Commander_Scoreboard"
@@ -12,7 +12,7 @@
     x:Class="Commander_Scoreboard.StartPage"
     mc:Ignorable="d">
 
-    <common:LayoutAwarePage.Resources>
+    <Page.Resources>
         <!--<DataTemplate x:Key="GridViewHeader">
             <TextBlock Style="{StaticResource HeaderTextStyle}" Text="{Binding}" Margin="0" RenderTransformOrigin="0.5,0" >
                 <TextBlock.RenderTransform>
@@ -27,7 +27,7 @@
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>
-    </common:LayoutAwarePage.Resources>
+    </Page.Resources>
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
@@ -81,15 +81,12 @@
         </TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Game Rules" Style="{StaticResource GridViewHeader}" Margin="0,0,25,0"/>
         <GridView ItemsSource="{Binding AvailablePlayers}" x:Name="playerPicker" CanReorderItems="True" AllowDrop="True" SelectionMode="Multiple" Grid.Row="2" Margin="100,0,0,0" >
-            <!--<GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VariableSizedWrapGrid Orientation="Horizontal"></VariableSizedWrapGrid>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>-->
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Border  BorderThickness="3">
-                        <TextBlock FontSize="56" Text="{Binding}" HorizontalAlignment="Left" Width="300" Margin="5"/>
+                        <Viewbox Width="300">
+                            <TextBlock Text="{Binding}" HorizontalAlignment="Left" Margin="5"/>
+                        </Viewbox>
                     </Border>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -115,15 +112,12 @@
 				KeyDown="NewPlayerBox_KeyDown" 
 				WatermarkText="Add a Friend"
 				Grid.Column="0"/>
-            <Button Content="Add" Tapped="NewPlayer" Grid.Column="1" />
+            <Button Content="Add" Command="{Binding AddPlayer}" Grid.Column="1" />
+            <!--Have to do code behind cuz there is no dep prop for SelectedItems -->
             <Button Content="Delete Selected Players" Tapped="DeletePlayers" Grid.Column="2" />
-            <!-- Empty Grid.3-->
-            <!--<Button Content="New Commander Game" Tapped="StartCommanderGame" Grid.Column="4"/>
-            <Button Content="New Standard Game" Tapped="StartNotCommanderGame" Grid.Column="5"/>-->
         </Grid>
         <Button Content="New Game" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Click="Button_Click"/>
-
         <Button Content="Remove Ads" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Stretch" Name="AdButton" Click="AdButton_Click"/>
         <UI:AdControl ApplicationId="291967cd-3993-4d64-b281-a468c7f3fee4" AdUnitId="10143691" Grid.Column="2" HorizontalAlignment="Left"   Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center"  Width="300" Height="600" ErrorOccurred="AdControl_ErrorOccurred" IsAutoRefreshEnabled="True" Name="AdControl" />
     </Grid>
-</common:LayoutAwarePage>
+</Page>
