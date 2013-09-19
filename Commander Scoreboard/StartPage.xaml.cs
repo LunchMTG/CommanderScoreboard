@@ -39,8 +39,8 @@ namespace Commander_Scoreboard
 
         private void HideAds()
         {
-            AdControl.Visibility = Visibility.Collapsed;
-            AdButton.Visibility = Visibility.Collapsed;
+            //AdControl.Visibility = Visibility.Collapsed;
+            //AdButton.Visibility = Visibility.Collapsed;
         }
 
         private PlayerList vm { get { return DataContext as PlayerList; } }
@@ -87,10 +87,10 @@ namespace Commander_Scoreboard
             }
         }
 
-        private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.WinRT.UI.AdErrorEventArgs e)
-        {
-            HideAds();
-        }
+        //private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.WinRT.UI.AdErrorEventArgs e)
+        //{
+        //    HideAds();
+        //}
 
         private async void AdButton_Click(object sender, RoutedEventArgs e)
         {

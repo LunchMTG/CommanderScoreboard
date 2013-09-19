@@ -98,7 +98,7 @@
             <Button Content="Delete Selected Players" Tapped="DeletePlayers" Grid.Column="2" />
         </Grid>
         <Button Content="New Game" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Click="Button_Click"/>
-        <Button Content="Remove Ads" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Stretch" Name="AdButton" Click="AdButton_Click"/>
-        <UI:AdControl ApplicationId="291967cd-3993-4d64-b281-a468c7f3fee4" AdUnitId="10143691" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center"  Width="300" Height="600" ErrorOccurred="AdControl_ErrorOccurred" IsAutoRefreshEnabled="True" Name="AdControl" />
+        <!--<Button Content="Remove Ads" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Stretch" Name="AdButton" Click="AdButton_Click"/>-->
+        <!--<UI:AdControl ApplicationId="291967cd-3993-4d64-b281-a468c7f3fee4" AdUnitId="10143691" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center"  Width="300" Height="600" ErrorOccurred="AdControl_ErrorOccurred" IsAutoRefreshEnabled="True" Name="AdControl" />-->
     </Grid>
 </Page>

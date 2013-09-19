@@ -167,7 +167,7 @@
                         <TextBlock Grid.Column="4" Grid.Row="0" Style="{StaticResource LabelStyle}" Visibility="{Binding ShowCommanderControls, Converter={StaticResource bool2Vis}}">Commander Damage</TextBlock>
                         <Border Grid.Column="4" Grid.Row="1" Visibility="{Binding ShowCommanderControls, Converter={StaticResource bool2Vis}}">
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox ItemsSource="{Binding Players}" MinWidth="200" Margin="5" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name"  RequestedTheme="Dark" FontSize="36"/>
+                                <ComboBox ItemsSource="{Binding Players}" MinWidth="200" Margin="5" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name" FontSize="36"/>
                                 <Button Command="{Binding UndoCommanderDamage}">-1</Button>
                                 <Button Command="{Binding SendCommanderDamage}">+1</Button>
                             </StackPanel>
