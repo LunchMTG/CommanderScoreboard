@@ -7,13 +7,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:edh="clr-namespace:MTGLib;assembly=MTGLib"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:MiniCommanderScoreboard"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
-
+    shell:SystemTray.IsVisible="False">
+    <phone:PhoneApplicationPage.Resources>
+        <local:boolToVisConverter x:Key="bool2Vis"/>
+    </phone:PhoneApplicationPage.Resources>
     <!--<phone:PhoneApplicationPage.DataContext>
         <edh:PlayerList />
     </phone:PhoneApplicationPage.DataContext>-->
@@ -45,26 +49,28 @@
          -->
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        <!--<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="commander scoreboard" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
             <TextBlock Text="Who's Playing?" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        </StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="60,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="0" Grid.ColumnSpan="2"/>
-            <TextBlock Text="Someone New?" Grid.Row="1" Margin="-36,0" />
-            <TextBox Name="NewPlayerBox" Grid.Row="2" Margin="-50,0, 0,0" KeyDown="NewPlayerBox_KeyDown"/>
-            <Button Grid.Row="2" Grid.Column="1" Content="Add" Click="Button_Click"/>
+            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Friends"/>
+            <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" Margin="24,12 " ></ListBox>
+            <!--<TextBlock Text="Someone New?" Grid.Row="1" Margin="-36,0" />-->
+            <toolkit:ToggleSwitch Header="Guests" Name="GuestSwitch" Grid.Row="3" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>
+            <Slider Minimum="1" Maximum="4" Value="{Binding GuestCount, Mode=TwoWay}" Grid.Row="4" Visibility="{Binding IsChecked,ElementName=GuestSwitch, Converter={StaticResource bool2Vis}}"></Slider>
+            <toolkit:PhoneTextBox Name="NewPlayerBox" ActionIcon="/Toolkit.Content/Dark.ApplicationBar.Add.png" Hint="Add a Friend" Grid.Row="2" KeyDown="NewPlayerBox_KeyDown" ActionIconTapped="AddPlayer" HidesActionItemWhenEmpty="True" />
+            <!--<TextBox Name="NewPlayerBox" Grid.Row="2" Margin="-50,0, 0,0" KeyDown="NewPlayerBox_KeyDown"/>-->
+            <!--<Button Grid.Row="2" Grid.Column="1" Content="Add" Click="Button_Click"/>-->
 
         </Grid>
 

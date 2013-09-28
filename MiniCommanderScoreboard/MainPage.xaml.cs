@@ -35,6 +35,7 @@ namespace MiniCommanderScoreboard
             //NavigationService.Navigate(new Uri("/AddPlayer.xaml",UriKind.Relative));
             if (!string.IsNullOrWhiteSpace(NewPlayerBox.Text))
                 vm.AvailablePlayers.Add(NewPlayerBox.Text);
+            NewPlayerBox.Text = "";
             vm.Save();
         }
 
@@ -47,15 +48,18 @@ namespace MiniCommanderScoreboard
         {
             var players = vm.Players.Select(name => new Player(isCommander) { Name = name }).ToList();
 
+            for (int i = 0; i < vm.GuestCount; i++)
+                players.Add(new Player(isCommander) { Name = "guest " + (i + 1) });
+
             var game = new Game
             {
                 IsCommanderGame = isCommander,
                 Players = new System.Collections.ObjectModel.ObservableCollection<Player>(players)
             };
-            
+
             if (game.Players.Any())
             {
-                           PhoneApplicationService.Current.State["game"] = game;
+                PhoneApplicationService.Current.State["game"] = game;
                 NavigationService.Navigate(new Uri("/Scoreboard.xaml", UriKind.Relative));
             }
         }
@@ -86,16 +90,10 @@ namespace MiniCommanderScoreboard
 
         private void DeletePlayers(object sender, EventArgs e)
         {
-            //PlayerListBox.SelectedItems.OfType<string>().Select(player => { vm.AvailablePlayers.Remove(player); vm.Players.Remove(player); return true; });
             while (PlayerListBox.SelectedItems.Count > 0)
                 vm.AvailablePlayers.Remove((string)PlayerListBox.SelectedItems[0]);
 
-        }
-
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            AddPlayer(sender, e);
-            NewPlayerBox.Text = string.Empty; ;
+            vm.Save();
         }
 
         private void NewPlayerBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -103,7 +101,6 @@ namespace MiniCommanderScoreboard
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 AddPlayer(sender, EventArgs.Empty);
-                NewPlayerBox.Text = string.Empty;
                 e.Handled = true;
             }
         }

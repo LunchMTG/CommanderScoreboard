@@ -14,28 +14,13 @@ namespace MiniCommanderScoreboard
     {
         string[] IPlayerNamesStore.Load()
         {
-            try
-            {
-                IsolatedStorageFile fileStorage = IsolatedStorageFile.GetUserStoreForApplication();
-                using (var Reader = new StreamReader(new IsolatedStorageFileStream("scores", FileMode.Open, fileStorage)))
-                {
-                    string textFile = Reader.ReadToEnd();
-                    return textFile.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Select(name => name.Trim()).ToArray();
-                }
-            }
-            catch (Exception)
-            {
-                return new string[] { };
-            }
-
+            try { return (string[])IsolatedStorageSettings.ApplicationSettings["scores"]; }
+            catch { return new string[] { }; }
         }
 
         void IPlayerNamesStore.Save(IEnumerable<string> names)
         {
-            IsolatedStorageFile fileStorage = IsolatedStorageFile.GetUserStoreForApplication();
-            StreamWriter Writer = new StreamWriter(new IsolatedStorageFileStream("scores", FileMode.OpenOrCreate, fileStorage));
-            Writer.WriteLine(string.Join(";", names));
-            Writer.Close();
+            IsolatedStorageSettings.ApplicationSettings["scores"] = names.ToArray();
         }
     }
 }
