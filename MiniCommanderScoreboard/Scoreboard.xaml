@@ -157,7 +157,7 @@
             </ListBox>
         </Grid>
         <UserControl Grid.Row="1" FontSize="12">
-            <Viewbox>
+            <Viewbox StretchDirection="Both">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -168,24 +168,23 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Margin="12,0" Style="{StaticResource LabelStyle}">
 					<Run Text="Life Total"/>
                     </TextBlock>
                     <Border Grid.Column="0" Grid.Row="1">
-                        <StackPanel Orientation="Horizontal" Margin="20,0">
+                        <StackPanel Orientation="Horizontal" Margin="10,0">
                             <Button Command="{Binding Minus5Life}" Content="-5" />
                             <Button Command="{Binding Minus1Life}" Content="-1" />
                             <Button Command="{Binding Plus1Life}" Content="+1" />
                             <Button Command="{Binding Plus5Life}" Content="+5" />
                         </StackPanel>
                     </Border>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Margin="12,0" Visibility="{Binding ShowPoisonControls, Converter={StaticResource bool2VisConverter}}" Style="{StaticResource LabelStyle}">
+                    <TextBlock Grid.Column="1" Grid.Row="0"  Visibility="{Binding ShowPoisonControls, Converter={StaticResource bool2VisConverter}}" Style="{StaticResource LabelStyle}">
 					<Run Text="Poison" />
                     </TextBlock>
-                    <Border Grid.Column="1" Grid.Row="1" Visibility="{Binding ShowPoisonControls, Converter={StaticResource bool2VisConverter}}">
-                        <StackPanel Orientation="Horizontal" Margin="20,0">
+                    <Border Grid.Column="1" Grid.Row="1" Visibility="{Binding ShowPoisonControls, Converter={StaticResource bool2VisConverter}}" Margin="10,0">
+                        <StackPanel Orientation="Horizontal" >
                             <Button  Command="{Binding RemovePoison}">
                                 <TextBlock>
 								<Run Text="-1"/>
@@ -202,24 +201,24 @@
 					<Run Text="Recast Cost"/>
                     </TextBlock>
                     <Border Grid.Column="2" Grid.Row="1" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}">
-                        <StackPanel Orientation="Horizontal" Margin="20,0">
+                        <StackPanel Orientation="Horizontal" Margin="10,0">
                             <Button Command="{Binding RemoveCost}" Content="-2"/>
                             <Button Command="{Binding AddCost}" Content="+2"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" Margin="20,0" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}" Style="{StaticResource LabelStyle}">
+                    <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" Margin="10,0" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}" Style="{StaticResource LabelStyle}">
 					<Run Text="Commander Damage"/>
                     </TextBlock>
-                    <toolkit:ListPicker ExpansionMode="FullScreenOnly" Grid.Column="3" Grid.Row="1" ItemsSource="{Binding Players}" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name"  Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}" FullModeHeader="Who's Attacking?">
-                        <toolkit:ListPicker.FullModeItemTemplate>
-                            <DataTemplate>
-                                <TextBlock FontSize="42" Text="{Binding Name}"/>
-                            </DataTemplate>
-                        </toolkit:ListPicker.FullModeItemTemplate>
-                    </toolkit:ListPicker>
+
                     <Border Grid.Column="4" Grid.Row="1" Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}">
                         <StackPanel Orientation="Horizontal">
-
+                            <toolkit:ListPicker ExpansionMode="FullScreenOnly" Grid.Column="3" Grid.Row="1" ItemsSource="{Binding Players}" SelectedItem="{Binding CommanderDamageSource, Mode=TwoWay}" DisplayMemberPath="Name"  Visibility="{Binding ShowCommanderControls, Converter= {StaticResource bool2VisConverter}}" FullModeHeader="Who's Attacking?" MinWidth="80">
+                                <toolkit:ListPicker.FullModeItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="42" Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </toolkit:ListPicker.FullModeItemTemplate>
+                            </toolkit:ListPicker >
                             <Button  Command="{Binding UndoCommanderDamage}" Content="-1"/>
                             <Button Command="{Binding SendCommanderDamage}"  Content="+1"/>
                         </StackPanel>

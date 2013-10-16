@@ -9,8 +9,9 @@ namespace MTGLib
 {
     public class PlayerList : INotifyPropertyChanged
     {
-        public PlayerList(IPlayerNamesStore namesPersister)
+        public PlayerList(IPlayerNamesStore namesPersister, ILicenseInfo licenseInfo)
         {
+            this.licenseInfo = licenseInfo;
             this.namesPersister = namesPersister;
             AvailablePlayers = new ObservableCollection<string>(namesPersister.Load());
             Players = new ObservableCollection<string>();
@@ -57,6 +58,9 @@ namespace MTGLib
                     PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public bool IsTrial { get { return licenseInfo.IsTrial; } }
+
         public event PropertyChangedEventHandler PropertyChanged;
+        private ILicenseInfo licenseInfo;
     }
 }

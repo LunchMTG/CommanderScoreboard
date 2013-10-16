@@ -111,6 +111,7 @@
     <Compile Include="Scoreboard.xaml.cs">
       <DependentUpon>Scoreboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WP8LicenseInfo.cs" />
     <Compile Include="WP8NamesPersistor.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,8 +133,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MiniCommanderScoreboard_2013_07_25_00_11_25.sap" />
-    <None Include="MiniCommanderScoreboard_2013_08_05_22_48_03.sap" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -163,7 +162,9 @@
     <Content Include="Assets\Dark\close.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Dark\CommanderSymbol.png" />
+    <Content Include="Assets\Dark\CommanderSymbol.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Dark\DarkIcons.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -275,7 +276,6 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -300,7 +300,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BindableApplicationBar">
+    <Reference Include="BindableApplicationBar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\BindableApplicationBar.1.0.0\lib\sl4-windowsphone71\BindableApplicationBar.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">

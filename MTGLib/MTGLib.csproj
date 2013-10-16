@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CommanderDammageItem.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="ILicenseInfo.cs" />
     <Compile Include="IPlayerNamesStore.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerList.cs" />

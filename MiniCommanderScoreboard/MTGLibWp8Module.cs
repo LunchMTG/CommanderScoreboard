@@ -12,6 +12,7 @@ namespace MiniCommanderScoreboard
         public override void Load()
         {
             Bind<IPlayerNamesStore>().To<WP8NamesPersistor>();
+            Bind<ILicenseInfo>().To<WP8LicenseInfo>();
         }
 
     }

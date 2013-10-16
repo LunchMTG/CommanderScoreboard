@@ -35,17 +35,17 @@ namespace MVVM
 
         #region ICommand Members
         [DebuggerStepThrough]
-        public bool CanExecute(object parameter) 
-        { 
-            return _canExecute == null ? true : _canExecute((T)parameter); 
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute == null ? true : _canExecute((T)parameter);
         }
-
-        public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter) 
         { 
             _execute((T)parameter); 
         }
         #endregion // ICommand Members
+        
+        public event EventHandler CanExecuteChanged;
     }
 }

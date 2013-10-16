@@ -18,9 +18,6 @@ namespace MiniCommanderScoreboard
 
             IKernel kernel = new Ninject.StandardKernel(new MTGLibWp8Module());
             DataContext = kernel.Get<PlayerList>();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
         private PlayerList vm { get { return DataContext as PlayerList; } }
@@ -32,16 +29,10 @@ namespace MiniCommanderScoreboard
 
         private void AddPlayer(object sender, EventArgs e)
         {
-            //NavigationService.Navigate(new Uri("/AddPlayer.xaml",UriKind.Relative));
             if (!string.IsNullOrWhiteSpace(NewPlayerBox.Text))
                 vm.AvailablePlayers.Add(NewPlayerBox.Text);
             NewPlayerBox.Text = "";
             vm.Save();
-        }
-
-        private void StartCommanderGame(object sender, EventArgs e)
-        {
-            StartGame(true);
         }
 
         private void StartGame(bool isCommander)
@@ -88,14 +79,6 @@ namespace MiniCommanderScoreboard
             new Microsoft.Phone.Tasks.MarketplaceDetailTask().Show();
         }
 
-        private void DeletePlayers(object sender, EventArgs e)
-        {
-            while (PlayerListBox.SelectedItems.Count > 0)
-                vm.AvailablePlayers.Remove((string)PlayerListBox.SelectedItems[0]);
-
-            vm.Save();
-        }
-
         private void NewPlayerBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -103,6 +86,24 @@ namespace MiniCommanderScoreboard
                 AddPlayer(sender, EventArgs.Empty);
                 e.Handled = true;
             }
+        }
+
+        private void BindableApplicationBarButton_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            while (PlayerListBox.SelectedItems.Count > 0)
+                vm.AvailablePlayers.Remove((string)PlayerListBox.SelectedItems[0]);
+
+            vm.Save();
+        }
+
+        private void BindableApplicationBarButton_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            StartGame(true);
+        }
+
+        private void BindableApplicationBarButton_Tap_2(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            StartGame(false);
         }
 
         // Sample code for building a localized ApplicationBar
