@@ -20,6 +20,11 @@ You may clone, hack on, and use these apps freely, but you cannot sell it or der
 
 You may use MTGLib for your own projects without restriction.
 
+Privacy
+=======
+
+We don't collect or store any information about you. Trial versions of this application contain advertisements from Microsoft. The advertisements are subject to [Microsoft's privacy policy](http://privacy.microsoft.com/en-us/fullnotice.mspx).
+
 Contributing
 ============
 
