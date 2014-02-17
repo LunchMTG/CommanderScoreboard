@@ -113,6 +113,10 @@
       <Project>{d036b138-efef-4ab4-bef9-35b3c17ab930}</Project>
       <Name>MTGLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MVVM\MVVM.csproj">
+      <Project>{a53f3b75-90c8-449e-9ce7-cdc755eff868}</Project>
+      <Name>MVVM</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">

@@ -69,20 +69,11 @@ namespace Commander_Scoreboard
                 Frame.Navigate(typeof(MainPage), game);
         }
 
-
-        private void AddPlayer()
-        {
-            if (!string.IsNullOrWhiteSpace(NewPlayerBox.Text))
-                vm.AvailablePlayers.Add(NewPlayerBox.Text);
-            vm.Save();
-        }
-
         private void NewPlayerBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-
-                AddPlayer();
+                vm.AddPlayer.Execute(null);
                 NewPlayerBox.Text = "";
                 e.Handled = true;
             }

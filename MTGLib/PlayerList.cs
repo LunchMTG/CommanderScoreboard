@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using MVVM;
 
 namespace MTGLib
 {
@@ -16,6 +17,8 @@ namespace MTGLib
             AvailablePlayers = new ObservableCollection<string>(namesPersister.Load());
             Players = new ObservableCollection<string>();
         }
+
+        public RelayCommand AddPlayer { get { return new RelayCommand(() => { AvailablePlayers.Add(NewPlayerName); Save(); }); } }
 
         public ObservableCollection<string> AvailablePlayers { get; set; }
 
@@ -62,5 +65,7 @@ namespace MTGLib
 
         public event PropertyChangedEventHandler PropertyChanged;
         private ILicenseInfo licenseInfo;
+
+        public string NewPlayerName { get; set; }
     }
 }

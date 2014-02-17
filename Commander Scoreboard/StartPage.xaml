@@ -85,7 +85,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <toolkit:WatermarkTextBox 
-				x:Name="NewPlayerBox" Text="{Binding NewPlayerName, Mode=TwoWay}" 
+				x:Name="NewPlayerBox" Text="{Binding NewPlayerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
 				Margin="5" 
 				BorderBrush="White" 
 				Width="300" 
