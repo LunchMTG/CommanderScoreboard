@@ -121,6 +121,7 @@
     <Compile Include="Common\BooleanToVisibilityConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LicenseInformationWrapper.cs" />
     <Compile Include="PlayerListCache.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

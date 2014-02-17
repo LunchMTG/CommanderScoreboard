@@ -27,7 +27,7 @@ namespace Commander_Scoreboard
         public StartPage()
         {
             this.InitializeComponent();
-            DataContext = new PlayerList(new PlayerListCache());
+            DataContext = new PlayerList(new PlayerListCache(),new LicenseInformationWrapper());
 
 #if DEBUG
             if (CurrentApp.LicenseInformation.IsTrial)

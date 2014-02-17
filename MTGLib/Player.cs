@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading;
 
 namespace MTGLib
 {
@@ -19,11 +20,18 @@ namespace MTGLib
             IsCommanderGame = isInCommanderGame;
             CommanderDamage = new ObservableCollection<CommanderDamageItem>();
         }
+
+        private void UpdateLife()
+        {
+            Life += _lifedelta;
+            _lifedelta = 0;
+        }
+
         [DataMember]
         public string Name { get; set; }
         [DataMember]
         public int Life { get; set; }
-        public string LifeText { get { return string.Format("❤ {0}", Life); } }
+        public string LifeText { get { return string.Format("❤ {0}{1}", Life, LifeDelta == 0 ? "" : (LifeDelta > 0 ? "+" + LifeDelta : LifeDelta.ToString())); } }
         [DataMember]
         public int Poison { get; set; }
         public bool HasPoison { get { return Poison != 0; } }
@@ -63,5 +71,9 @@ namespace MTGLib
 
         [DataMember]
         public bool IsCommanderGame { get; set; }//{ get { return CommanderAdditionalCost != 0 || CommanderDamage.Count != 0; } }
+
+
+        private int _lifedelta;
+        public int LifeDelta { get { return _lifedelta; } set { _lifedelta = value; Refresh(); UpdateLife(); Refresh(); } }
     }
 }

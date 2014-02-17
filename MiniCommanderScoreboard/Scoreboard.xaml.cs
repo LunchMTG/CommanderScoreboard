@@ -37,7 +37,7 @@ namespace MiniCommanderScoreboard
                 case PageOrientation.LandscapeLeft:
                 case PageOrientation.LandscapeRight:
                     Landscape.Storyboard.Begin();
-                    ApplicationBar.IsVisible = true;
+                    ApplicationBar.IsVisible = false;
                     break;
                 case PageOrientation.None:
                     break;

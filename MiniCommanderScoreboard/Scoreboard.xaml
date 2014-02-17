@@ -228,8 +228,8 @@
         </UserControl>
     </Grid>
     <!--<phone:PhoneApplicationPage.ApplicationBar>-->
-    <appbar:Bindable.ApplicationBar  >
-        <appbar:BindableApplicationBar>
+    <appbar:Bindable.ApplicationBar>
+        <appbar:BindableApplicationBar Name="Appbar" ForegroundColor="{StaticResource PhoneAccentColor}" Mode="Minimized">
             <!--<shell:ApplicationBarIconButton Click="Settings" IconUri="Assets\Dark\feature.settings.png" Text="settings"/>-->
             <appbar:BindableApplicationBar.MenuItems>
                 <appbar:BindableApplicationBarMenuItem Command="{Binding TogglePoisonControls}"  Text="Toggle Poison Buttons"/>

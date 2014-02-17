@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="12472OwenJohnson.CommanderScoreboard" Publisher="CN=C99164FB-040C-425D-9886-4E0A8324C29B" Version="3.3.1.17" />
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="12472OwenJohnson.CommanderScoreboard" Publisher="CN=C99164FB-040C-425D-9886-4E0A8324C29B" Version="5.3.2.19" />
   <Properties>
     <DisplayName>Commander Scoreboard</DisplayName>
     <PublisherDisplayName>Owen Johnson</PublisherDisplayName>
@@ -15,17 +15,17 @@
   </Prerequisites>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Commander_Scoreboard.App">
-      <VisualElements DisplayName="Commander Scoreboard" Description="Commander Scoreboard" BackgroundColor="#336699" ForegroundText="light" ToastCapable="false" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png">
-        <DefaultTile ShortName="Commander Scoreboard" ShowName="noLogos">
-        </DefaultTile>
-        <InitialRotationPreference>
-          <Rotation Preference="portrait" />
-          <Rotation Preference="landscape" />
-          <Rotation Preference="portraitFlipped" />
-          <Rotation Preference="landscapeFlipped" />
-        </InitialRotationPreference>
-        <SplashScreen BackgroundColor="#121212" Image="Assets\SplashScreen.png" />
-      </VisualElements>
+      <m2:VisualElements DisplayName="Commander Scoreboard" Description="Commander Scoreboard" BackgroundColor="#336699" ForegroundText="light" ToastCapable="false" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">
+        <m2:DefaultTile ShortName="Commander Scoreboard">
+        </m2:DefaultTile>
+        <m2:InitialRotationPreference>
+          <m2:Rotation Preference="portrait" />
+          <m2:Rotation Preference="landscape" />
+          <m2:Rotation Preference="portraitFlipped" />
+          <m2:Rotation Preference="landscapeFlipped" />
+        </m2:InitialRotationPreference>
+        <m2:SplashScreen BackgroundColor="#121212" Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
     </Application>
   </Applications>
 </Package>

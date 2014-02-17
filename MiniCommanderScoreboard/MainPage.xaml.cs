@@ -60,6 +60,11 @@ namespace MiniCommanderScoreboard
             StartGame(false);
         }
 
+        private void StartCommanderGame(object sender, EventArgs e)
+        {
+            StartGame(true);
+        }
+
         private void GotoRateInStore(object sender, EventArgs e)
         {
             new Microsoft.Phone.Tasks.MarketplaceReviewTask().Show();
@@ -88,7 +93,7 @@ namespace MiniCommanderScoreboard
             }
         }
 
-        private void BindableApplicationBarButton_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void DeletePlayers(object sender, EventArgs e)
         {
             while (PlayerListBox.SelectedItems.Count > 0)
                 vm.AvailablePlayers.Remove((string)PlayerListBox.SelectedItems[0]);
@@ -96,14 +101,9 @@ namespace MiniCommanderScoreboard
             vm.Save();
         }
 
-        private void BindableApplicationBarButton_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
+        private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
         {
-            StartGame(true);
-        }
 
-        private void BindableApplicationBarButton_Tap_2(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            StartGame(false);
         }
 
         // Sample code for building a localized ApplicationBar

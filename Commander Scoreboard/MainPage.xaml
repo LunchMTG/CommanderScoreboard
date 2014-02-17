@@ -18,7 +18,7 @@
 
         <Style x:Key="PlayerNameStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="72"/>
-            <Setter Property="Foreground" Value="#669933" />
+            <Setter Property="Foreground" Value="#f70" />
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
         <Style x:Key="PoisonCounterStyle" TargetType="TextBlock" BasedOn="{StaticResource PlayerNameStyle}">

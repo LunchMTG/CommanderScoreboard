@@ -11,14 +11,6 @@ namespace MTGLib
         public Game()
         {
             Players = new ObservableCollection<Player>();
-            //{
-            //    new Player{ Name = "Owen"},
-            //    new Player{ Name = "Carlos"},
-            //    new Player{ Name = "Judah"},
-            //    new Player{ Name = "Ross"},
-            //    new Player{ Name = "Scumbag Merek"}
-            //};
-
         }
 
         public ObservableCollection<Player> Players { get; set; }
@@ -73,10 +65,10 @@ namespace MTGLib
                 });
             }
         }
-        public RelayCommand Plus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life++; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand Plus5Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life += 5; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand Minus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life--; CurrentPlayer.Refresh(); }); } }
-        public RelayCommand Minus5Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Life -= 5; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand Plus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.LifeDelta++; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand Plus5Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.LifeDelta += 5; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand Minus1Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.LifeDelta--; CurrentPlayer.Refresh(); }); } }
+        public RelayCommand Minus5Life { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.LifeDelta -= 5; CurrentPlayer.Refresh(); }); } }
         public RelayCommand RemovePoison { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Poison--; CurrentPlayer.Refresh(); }); } }
         public RelayCommand AddPoison { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.Poison++; CurrentPlayer.Refresh(); }); } }
         public RelayCommand AddCost { get { return new RelayCommand(() => { if (CurrentPlayer == null) return; CurrentPlayer.CommanderAdditionalCost += 2; CurrentPlayer.Refresh(); }); } }

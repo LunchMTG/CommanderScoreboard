@@ -66,14 +66,25 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Friends"/>
-            <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" Margin="24,12 " ></ListBox>
+            <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" Margin="24,12 " >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <toolkit:WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontSize="42" Margin="12,5"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             <!--<TextBlock Text="Someone New?" Grid.Row="1" Margin="-36,0" />-->
             <toolkit:ToggleSwitch Header="Guests" Name="GuestSwitch" Grid.Row="3" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>
             <Slider Minimum="1" Maximum="4" Value="{Binding GuestCount, Mode=TwoWay}" Grid.Row="4" Visibility="{Binding IsChecked,ElementName=GuestSwitch, Converter={StaticResource bool2Vis}}"></Slider>
             <toolkit:PhoneTextBox Name="NewPlayerBox" ActionIcon="/Toolkit.Content/Dark.ApplicationBar.Add.png" Hint="Add a Friend" Grid.Row="2" KeyDown="NewPlayerBox_KeyDown" ActionIconTapped="AddPlayer" HidesActionItemWhenEmpty="True" />
             <!--<TextBox Name="NewPlayerBox" Grid.Row="2" Margin="-50,0, 0,0" KeyDown="NewPlayerBox_KeyDown"/>-->
             <!--<Button Grid.Row="2" Grid.Column="1" Content="Add" Click="Button_Click"/>-->
-            <ads:AdControl Grid.Row="5" ApplicationId="7de0ffe4-8f76-4622-82c6-5a06a0153609" AdUnitId="10218652" Height="80" Width="480" Margin="-12,0,-12,-12"  IsAutoCollapseEnabled="True" IsAutoRefreshEnabled="True" Visibility="{Binding IsTrial, Converter={StaticResource bool2Vis}}"/>
+            <ads:AdControl Grid.Row="5" ApplicationId="7de0ffe4-8f76-4622-82c6-5a06a0153609" AdUnitId="10218652" Height="80" Width="480" Margin="-12,0,-12,-12"  IsAutoCollapseEnabled="True" IsAutoRefreshEnabled="True" Visibility="{Binding IsTrial, Converter={StaticResource bool2Vis}}" ErrorOccurred="AdControl_ErrorOccurred" Keywords="Magic,Cards,Collectibles,Games,Hobby"/>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
@@ -85,7 +96,7 @@
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </Grid>
 
-    <appbar:Bindable.ApplicationBar >
+    <!--<appbar:Bindable.ApplicationBar >
         <appbar:BindableApplicationBar>
             <appbar:BindableApplicationBarButton IconUri="Assets\Dark\delete.png" Text="unfriend" Tap="BindableApplicationBarButton_Tap" />
             <appbar:BindableApplicationBarButton IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" Tap="BindableApplicationBarButton_Tap_1"></appbar:BindableApplicationBarButton>
@@ -93,15 +104,12 @@
             <appbar:BindableApplicationBar.MenuItems>
                 <appbar:BindableApplicationBarMenuItem Tap="GotoRateInStore" Text="Rate"/>
                 <appbar:BindableApplicationBarMenuItem Tap="SendOwenAnEmail" Text="Send Feedback"/>
-                <appbar:BindableApplicationBarMenuItem Tap="GotoBuyInStore" Text="Remove Advertisements" IsVisible="{Binding IsTrial}"/>
+                <appbar:BindableApplicationBarMenuItem Tap="GotoBuyInStore" Text="Remove Advertisements"/>
             </appbar:BindableApplicationBar.MenuItems>
         </appbar:BindableApplicationBar>
-    </appbar:Bindable.ApplicationBar>
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
+    </appbar:Bindable.ApplicationBar>-->
+    <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar >
-            -->
-    <!--<shell:ApplicationBarIconButton Click="Settings" IconUri="Assets\Dark\feature.settings.png" Text="settings"/>-->
-    <!--
             <shell:ApplicationBarIconButton Click="DeletePlayers" IconUri="Assets\Dark\delete.png" Text="remove"/>
             <shell:ApplicationBarIconButton Click="StartCommanderGame" IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" />
             <shell:ApplicationBarIconButton Click="StartStandardGame" Text="Standard" IconUri="Assets\Dark\like.png" />
@@ -111,5 +119,5 @@
                 <shell:ApplicationBarMenuItem Click="GotoBuyInStore" Text="Remove Advertisements"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>
