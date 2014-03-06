@@ -70,8 +70,7 @@ namespace MTGLib
         public event PropertyChangedEventHandler PropertyChanged;
 
         [DataMember]
-        public bool IsCommanderGame { get; set; }//{ get { return CommanderAdditionalCost != 0 || CommanderDamage.Count != 0; } }
-
+        public bool IsCommanderGame { get; set; }
 
         private int _lifedelta;
         public int LifeDelta { get { return _lifedelta; } set { _lifedelta = value; Refresh(); UpdateLife(); Refresh(); } }
