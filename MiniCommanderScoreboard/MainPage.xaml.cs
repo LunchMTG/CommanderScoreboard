@@ -6,6 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using Microsoft.Phone.Shell;
+using System.Windows;
 
 namespace MiniCommanderScoreboard
 {
@@ -103,7 +104,13 @@ namespace MiniCommanderScoreboard
 
         private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
         {
+            (sender as FrameworkElement).Visibility = Visibility.Collapsed;
+        }
 
+        private void ResumeGame(object sender, EventArgs e)
+        {
+            if (PhoneApplicationService.Current.State["game"] != null)
+                NavigationService.Navigate(new Uri("/Scoreboard.xaml", UriKind.Relative));
         }
 
         // Sample code for building a localized ApplicationBar
