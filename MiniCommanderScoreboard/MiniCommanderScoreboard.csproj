@@ -175,9 +175,6 @@
     <Content Include="Assets\Dark\CommanderSymbol.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Dark\DarkIcons.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\Dark\delete.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -286,9 +283,8 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Toolkit.Content\ApplicationBar.Add.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
@@ -310,16 +306,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BindableApplicationBar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BindableApplicationBar, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\BindableApplicationBar.1.0.0\lib\sl4-windowsphone71\BindableApplicationBar.dll</HintPath>
+      <HintPath>..\packages\BindableApplicationBar.1.1.0.0\lib\wp8\BindableApplicationBar.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.0.1.10\lib\sl4-windowsphone71\Ninject.dll</HintPath>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\sl4-windowsphone71\Ninject.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
