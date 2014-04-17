@@ -109,7 +109,7 @@ namespace MiniCommanderScoreboard
 
         private void ResumeGame(object sender, EventArgs e)
         {
-            if (PhoneApplicationService.Current.State["game"] != null)
+            if (PhoneApplicationService.Current.State.ContainsKey("game"))
                 NavigationService.Navigate(new Uri("/Scoreboard.xaml", UriKind.Relative));
         }
 
