@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.20623.1 VSUPREVIEW
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commander Scoreboard", "Commander Scoreboard\Commander Scoreboard.csproj", "{510361C8-4BE4-4196-99DF-F108213470A6}"
 EndProject
@@ -11,7 +11,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTGLib", "MTGLib\MTGLib.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM", "MVVM\MVVM.csproj", "{A53F3B75-90C8-449E-9CE7-CDC755EFF868}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommanderScoreboardUniversal", "CommanderScoreboardUniversal", "{FE3B9194-3946-4FD5-A80C-C16D52439AFE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommanderScoreboardUniversal.Shared", "CommanderScoreboardUniversal\CommanderScoreboardUniversal.Shared\CommanderScoreboardUniversal.Shared.shproj", "{C2401D6C-2150-4BEA-9CDA-95B29DD4462D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommanderScoreboardUniversal.Windows", "CommanderScoreboardUniversal\CommanderScoreboardUniversal.Windows\CommanderScoreboardUniversal.Windows.csproj", "{F462090B-CB33-466D-8436-1D2C44E18CEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommanderScoreboardUniversal.WindowsPhone", "CommanderScoreboardUniversal\CommanderScoreboardUniversal.WindowsPhone\CommanderScoreboardUniversal.WindowsPhone.csproj", "{D9CEC682-D018-4B9C-9331-0E4E6176B92A}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CommanderScoreboardUniversal\CommanderScoreboardUniversal.Shared\CommanderScoreboardUniversal.Shared.projitems*{d9cec682-d018-4b9c-9331-0e4e6176b92a}*SharedItemsImports = 4
+		CommanderScoreboardUniversal\CommanderScoreboardUniversal.Shared\CommanderScoreboardUniversal.Shared.projitems*{f462090b-cb33-466d-8436-1d2c44e18cec}*SharedItemsImports = 4
+		CommanderScoreboardUniversal\CommanderScoreboardUniversal.Shared\CommanderScoreboardUniversal.Shared.projitems*{c2401d6c-2150-4bea-9cda-95b29dd4462d}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
@@ -87,8 +100,57 @@ Global
 		{A53F3B75-90C8-449E-9CE7-CDC755EFF868}.Release|ARM.ActiveCfg = Release|Any CPU
 		{A53F3B75-90C8-449E-9CE7-CDC755EFF868}.Release|x64.ActiveCfg = Release|Any CPU
 		{A53F3B75-90C8-449E-9CE7-CDC755EFF868}.Release|x86.ActiveCfg = Release|Any CPU
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|ARM.ActiveCfg = Debug|ARM
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|ARM.Build.0 = Debug|ARM
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|ARM.Deploy.0 = Debug|ARM
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|x64.ActiveCfg = Debug|x64
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|x64.Build.0 = Debug|x64
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|x64.Deploy.0 = Debug|x64
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|x86.ActiveCfg = Debug|x86
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|x86.Build.0 = Debug|x86
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Debug|x86.Deploy.0 = Debug|x86
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|ARM.ActiveCfg = Release|ARM
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|ARM.Build.0 = Release|ARM
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|ARM.Deploy.0 = Release|ARM
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|x64.ActiveCfg = Release|x64
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|x64.Build.0 = Release|x64
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|x64.Deploy.0 = Release|x64
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|x86.ActiveCfg = Release|x86
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|x86.Build.0 = Release|x86
+		{F462090B-CB33-466D-8436-1D2C44E18CEC}.Release|x86.Deploy.0 = Release|x86
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|ARM.Build.0 = Debug|ARM
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|ARM.Deploy.0 = Debug|ARM
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|x86.ActiveCfg = Debug|x86
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|x86.Build.0 = Debug|x86
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Debug|x86.Deploy.0 = Debug|x86
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|ARM.ActiveCfg = Release|ARM
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|ARM.Build.0 = Release|ARM
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|ARM.Deploy.0 = Release|ARM
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|x64.ActiveCfg = Release|Any CPU
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|x86.ActiveCfg = Release|x86
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|x86.Build.0 = Release|x86
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C2401D6C-2150-4BEA-9CDA-95B29DD4462D} = {FE3B9194-3946-4FD5-A80C-C16D52439AFE}
+		{F462090B-CB33-466D-8436-1D2C44E18CEC} = {FE3B9194-3946-4FD5-A80C-C16D52439AFE}
+		{D9CEC682-D018-4B9C-9331-0E4E6176B92A} = {FE3B9194-3946-4FD5-A80C-C16D52439AFE}
 	EndGlobalSection
 EndGlobal
