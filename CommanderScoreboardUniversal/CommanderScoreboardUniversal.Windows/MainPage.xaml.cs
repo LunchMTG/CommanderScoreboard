@@ -28,7 +28,7 @@ namespace CommanderScoreboardUniversal
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             MakeDesignerVM();
         }

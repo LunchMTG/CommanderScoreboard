@@ -94,7 +94,6 @@
                     </GridView.ItemsPanel>
                     <GridView.ItemTemplate>
                         <DataTemplate>
-
                             <Grid Width="200" Margin="10,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>

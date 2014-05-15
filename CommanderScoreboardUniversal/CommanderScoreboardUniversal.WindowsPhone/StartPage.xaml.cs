@@ -1,31 +1,27 @@
-﻿using Microsoft.Phone.Controls;
-using MTGLib;
-using Ninject;
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Windows.Controls;
-using Microsoft.Phone.Shell;
 using System.Windows;
+using Windows.UI.Xaml.Controls;
+using CommanderScoreboardUniversal.ViewModels;
 
-namespace MiniCommanderScoreboard
+namespace CommanderScoreboardUniversal
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class StartPage : Page
     {
         // Constructor
-        public MainPage()
+        public StartPage()
         {
             InitializeComponent();
 
-            IKernel kernel = new Ninject.StandardKernel(new MTGLibWp8Module());
-            DataContext = kernel.Get<PlayerList>();
+            DataContext = new PlayerListCache();
         }
 
         private PlayerList vm { get { return DataContext as PlayerList; } }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            (DataContext as PlayerList).Players = new System.Collections.ObjectModel.ObservableCollection<string>((sender as ListBox).SelectedItems.OfType<string>());
+            (DataContext as PlayerListCache).Players = new System.Collections.ObjectModel.ObservableCollection<string>((sender as ListBox).SelectedItems.OfType<string>());
         }
 
         private void AddPlayer(object sender, EventArgs e)

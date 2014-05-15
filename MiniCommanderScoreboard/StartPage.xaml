@@ -1,0 +1,123 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MiniCommanderScoreboard.StartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:edh="clr-namespace:MTGLib;assembly=MTGLib"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:MiniCommanderScoreboard"
+    xmlns:ads="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    xmlns:appbar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+    <phone:PhoneApplicationPage.Resources>
+        <local:boolToVisConverter x:Key="bool2Vis"/>
+    </phone:PhoneApplicationPage.Resources>
+    <!--<phone:PhoneApplicationPage.DataContext>
+        <edh:PlayerList />
+    </phone:PhoneApplicationPage.DataContext>-->
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- LOCALIZATION NOTE:
+            To localize the displayed strings copy their values to appropriately named
+            keys in the app's neutral language resource file (AppResources.resx) then
+            replace the hard-coded text value between the attributes' quotation marks
+            with the binding clause whose path points to that string name.
+
+            For example:
+
+                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+
+            This binding points to the template's string resource named "ApplicationTitle".
+
+            Adding supported languages in the Project Properties tab will create a
+            new resx file per language that can carry the translated values of your
+            UI strings. The binding in these examples will cause the value of the
+            attributes to be drawn from the .resx file that matches the
+            CurrentUICulture of the app at run time.
+         -->
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <!--<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="commander scoreboard" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="Who's Playing?" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>-->
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Friends"/>
+            <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" Margin="24,12 " >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <toolkit:WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontSize="42" Margin="12,5"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <toolkit:ToggleSwitch Header="Guests" Name="GuestSwitch" Grid.Row="3" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>
+            <Slider Minimum="1" Maximum="4" Value="{Binding GuestCount, Mode=TwoWay}" Grid.Row="4" Visibility="{Binding IsChecked,ElementName=GuestSwitch, Converter={StaticResource bool2Vis}}"></Slider>
+            <toolkit:PhoneTextBox Name="NewPlayerBox" ActionIcon="/Toolkit.Content/Dark.ApplicationBar.Add.png" Hint="Add a Friend" Grid.Row="2" KeyDown="NewPlayerBox_KeyDown" ActionIconTapped="AddPlayer" HidesActionItemWhenEmpty="True" />
+            <!--<Button Grid.Row="5" Visibility="{Binding CanResume, Converter={StaticResource bool2Vis}}" Click="ResumeGame"/>-->
+            <!--<ads:AdControl Grid.Row="6" ApplicationId="7de0ffe4-8f76-4622-82c6-5a06a0153609" AdUnitId="10218652" Height="80" Width="480" Margin="-12,0,-12,-12"  IsAutoCollapseEnabled="True" IsAutoRefreshEnabled="True" Visibility="{Binding IsTrial, Converter={StaticResource bool2Vis}}" ErrorOccurred="AdControl_ErrorOccurred" Keywords="Magic,Cards,Collectibles,Games,Hobby"/>-->
+        </Grid>
+
+        <!--Uncomment to see an alignment grid to help ensure your controls are
+            aligned on common boundaries.  The image has a top margin of -32px to
+            account for the System Tray. Set this to 0 (or remove the margin altogether)
+            if the System Tray is hidden.
+
+            Before shipping remove this XAML and the image itself.-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+    </Grid>
+
+    <!--<appbar:Bindable.ApplicationBar >
+        <appbar:BindableApplicationBar>
+            <appbar:BindableApplicationBarButton IconUri="Assets\Dark\delete.png" Text="unfriend" Tap="BindableApplicationBarButton_Tap" />
+            <appbar:BindableApplicationBarButton IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" Tap="BindableApplicationBarButton_Tap_1"></appbar:BindableApplicationBarButton>
+            <appbar:BindableApplicationBarButton Text="Standard" IconUri="Assets\Dark\like.png" Tap="BindableApplicationBarButton_Tap_2" />
+            <appbar:BindableApplicationBar.MenuItems>
+                <appbar:BindableApplicationBarMenuItem Tap="GotoRateInStore" Text="Rate"/>
+                <appbar:BindableApplicationBarMenuItem Tap="SendOwenAnEmail" Text="Send Feedback"/>
+                <appbar:BindableApplicationBarMenuItem Tap="GotoBuyInStore" Text="Remove Advertisements"/>
+            </appbar:BindableApplicationBar.MenuItems>
+        </appbar:BindableApplicationBar>
+    </appbar:Bindable.ApplicationBar>-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar >
+            <shell:ApplicationBarIconButton Click="DeletePlayers" IconUri="Assets\Dark\delete.png" Text="remove"/>
+            <shell:ApplicationBarIconButton Click="StartCommanderGame" IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" />
+            <shell:ApplicationBarIconButton Click="StartStandardGame" Text="Standard" IconUri="Assets\Dark\like.png" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Click="GotoRateInStore" Text="Rate"/>
+                <shell:ApplicationBarMenuItem Click="ResumeGame" Text="Resume Game"/>
+                <shell:ApplicationBarMenuItem Click="SendOwenAnEmail" Text="Send Feedback"/>
+                <shell:ApplicationBarMenuItem Click="GotoBuyInStore" Text="Support this App"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

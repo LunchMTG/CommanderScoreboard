@@ -22,8 +22,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Game.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ILicenseInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IPlayerNamesStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LicenseInformationWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Player.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PlayerList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PlayerListCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)StandardStyles.xaml">
