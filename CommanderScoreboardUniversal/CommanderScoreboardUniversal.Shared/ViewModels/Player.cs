@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace CommanderScoreboardUniversal.ViewModels
 {
@@ -21,10 +22,21 @@ namespace CommanderScoreboardUniversal.ViewModels
             CommanderDamage = new ObservableCollection<CommanderDamageItem>();
         }
 
+        DateTime lastTimeWeChangedLifeDelta = DateTime.Now;
+
         private void UpdateLife()
         {
-            Life += _lifedelta;
-            _lifedelta = 0;
+            if (!(lastTimeWeChangedLifeDelta.Add(TimeSpan.FromSeconds(3)) > DateTime.Now)) // If more than 3 seconds ago.
+            {
+                Life += _lifedelta;
+                _lifedelta = 0;
+                Refresh();
+            }
+            else
+            {
+                Action temp = async () => { await Task.Delay(3000); UpdateLife(); };
+                temp.Invoke();
+            }
         }
 
         [DataMember]
@@ -63,8 +75,7 @@ namespace CommanderScoreboardUniversal.ViewModels
 
         public void Refresh()
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(""));
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(""));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -73,6 +84,6 @@ namespace CommanderScoreboardUniversal.ViewModels
         public bool IsCommanderGame { get; set; }
 
         private int _lifedelta;
-        public int LifeDelta { get { return _lifedelta; } set { _lifedelta = value; Refresh(); UpdateLife(); Refresh(); } }
+        public int LifeDelta { get { return _lifedelta; } set { _lifedelta = value; lastTimeWeChangedLifeDelta = DateTime.Now; Refresh(); UpdateLife(); } }
     }
 }
