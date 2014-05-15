@@ -3,5 +3,24 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CommanderScoreboardUniversal">
+    <Application.Resources>
+        <ResourceDictionary>
+        <Color x:Key="AppAccentColor">#336699</Color>
+        <Color x:Key="ItemSelectonColor">#CC336699</Color>
+        <Color x:Key="ItemSelectonHoverColor">#99336699</Color>
 
+        <SolidColorBrush x:Key="ListViewItemPlaceholderBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+        <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="{StaticResource ItemSelectonHoverColor}" />
+        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="{StaticResource ItemSelectonHoverColor}" />
+        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+        <SolidColorBrush x:Key="ComboBoxItemSelectedBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+        <SolidColorBrush x:Key="ComboBoxItemSelectedPointerOverBackgroundThemeBrush" Color="{StaticResource ItemSelectonHoverColor}" />
+        <SolidColorBrush x:Key="ToggleSwitchCurtainBackgroundThemeBrush" Color="{StaticResource AppAccentColor}" />
+        <SolidColorBrush x:Key="ToggleSwitchCurtainPointerOverBackgroundThemeBrush" Color="{StaticResource ItemSelectonHoverColor}" />
+        <SolidColorBrush x:Key="ToggleSwitchCurtainPressedBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="StandardStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

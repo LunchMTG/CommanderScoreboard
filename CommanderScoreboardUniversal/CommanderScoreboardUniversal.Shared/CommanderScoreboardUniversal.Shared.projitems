@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
     <SharedGUID>c2401d6c-2150-4bea-9cda-95b29dd4462d</SharedGUID>
   </PropertyGroup>
-  <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>CommanderScoreboardUniversal</Import_RootNamespace>
-  </PropertyGroup>
+  <PropertyGroup Label="Configuration" />
   <ItemGroup>
     <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
       <SubType>Designer</SubType>
@@ -15,5 +13,22 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BooleanToVisibilityConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Plumbing\NotifyObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Plumbing\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CommanderDammageItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Game.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ILicenseInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IPlayerNamesStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Player.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PlayerList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)StandardStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>
