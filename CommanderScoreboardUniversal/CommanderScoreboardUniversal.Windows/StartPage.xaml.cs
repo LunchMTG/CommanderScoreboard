@@ -28,20 +28,20 @@ namespace CommanderScoreboardUniversal
             this.InitializeComponent();
             DataContext = new PlayerList(new PlayerListCache(),new LicenseInformationWrapper());
 
-//#if DEBUG
-//            if (CurrentApp.LicenseInformation.IsTrial)
-//                HideAds();
-//#else
-//            //if (!CurrentApp.LicenseInformation.IsTrial)
-//            //    HideAds();
-//#endif
+#if DEBUG
+            if (CurrentApp.LicenseInformation.IsTrial)
+                HideAds();
+#else
+            if (!CurrentApp.LicenseInformation.IsTrial)
+                HideAds();
+#endif
         }
 
-        //private void HideAds()
-        //{
-        //    theAd.Visibility = Visibility.Collapsed;
-        //    AdButton.Visibility = Visibility.Collapsed;
-        //}
+        private void HideAds()
+        {
+            //theAd.Visibility = Visibility.Collapsed;
+            AdButton.Visibility = Visibility.Collapsed;
+        }
 
         private PlayerList vm { get { return DataContext as PlayerList; } }
 
