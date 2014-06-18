@@ -28,13 +28,13 @@ namespace CommanderScoreboardUniversal
             this.InitializeComponent();
             DataContext = new PlayerList(new PlayerListCache(),new LicenseInformationWrapper());
 
-#if DEBUG
-            if (CurrentApp.LicenseInformation.IsTrial)
-                HideAds();
-#else
-            //if (!CurrentApp.LicenseInformation.IsTrial)
-            //    HideAds();
-#endif
+//#if DEBUG
+//            if (CurrentApp.LicenseInformation.IsTrial)
+//                HideAds();
+//#else
+//            //if (!CurrentApp.LicenseInformation.IsTrial)
+//            //    HideAds();
+//#endif
         }
 
         //private void HideAds()

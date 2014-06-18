@@ -1,22 +1,15 @@
 ﻿<Page
-    x:Class="CommanderScoreBoardUniversal.StartPage"
+    x:Class="CommanderScoreboardUniversal.StartPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:edh="clr-namespace:MTGLib;assembly=MTGLib"
-    xmlns:toolkit="using:Microsoft.Phone.Controls"
     xmlns:local="using:CommanderScoreboardUniversal.Converters"
-    xmlns:ads="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
-    xmlns:appbar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
     mc:Ignorable="d"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}">
+>
     <Page.Resources>
-        <local:BooleanToVisibilityConverter x:Key="boo2Vis"/>
+        <local:BooleanToVisibilityConverter x:Key="bool2Vis"/>
     </Page.Resources>
     <!--<phone:PhoneApplicationPage.DataContext>
         <edh:PlayerList />
@@ -64,23 +57,22 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Friends"/>
-            <ListBox Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" Margin="24,12 " >
-                <ListBox.ItemsPanel>
+            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Friends"/>
+            <GridView Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" Margin="24,12 " >
+                <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VariableSizedWrapGrid />
                     </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
+                </GridView.ItemsPanel>
+                <GridView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" FontSize="42" Margin="12,5"/>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <CheckBox Header="Guests" Name="GuestSwitch" Grid.Row="3" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>
+                </GridView.ItemTemplate>
+            </GridView>
+            <CheckBox Name="GuestSwitch" Grid.Row="3" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>
             <Slider Minimum="1" Maximum="4" Value="{Binding GuestCount, Mode=TwoWay}" Grid.Row="4" Visibility="{Binding IsChecked,ElementName=GuestSwitch, Converter={StaticResource bool2Vis}}"></Slider>
-            <toolkit:PhoneTextBox Name="NewPlayerBox" ActionIcon="/Toolkit.Content/Dark.ApplicationBar.Add.png" Hint="Add a Friend" Grid.Row="2" KeyDown="NewPlayerBox_KeyDown" ActionIconTapped="AddPlayer" HidesActionItemWhenEmpty="True" />
-            <!--<Button Grid.Row="5" Visibility="{Binding CanResume, Converter={StaticResource bool2Vis}}" Click="ResumeGame"/>-->
+            <TextBox Name="NewPlayerBox" Grid.Row="5" Visibility="{Binding CanResume, Converter={StaticResource bool2Vis}}" KeyDown="NewPlayerBox_KeyDown_1" />
             <!--<ads:AdControl Grid.Row="6" ApplicationId="7de0ffe4-8f76-4622-82c6-5a06a0153609" AdUnitId="10218652" Height="80" Width="480" Margin="-12,0,-12,-12"  IsAutoCollapseEnabled="True" IsAutoRefreshEnabled="True" Visibility="{Binding IsTrial, Converter={StaticResource bool2Vis}}" ErrorOccurred="AdControl_ErrorOccurred" Keywords="Magic,Cards,Collectibles,Games,Hobby"/>-->
         </Grid>
 
@@ -92,18 +84,15 @@
             Before shipping remove this XAML and the image itself.-->
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </Grid>
-
-    <!--<Page.ApplicationBar>
-        <AppBar >
-            <shell:ApplicationBarIconButton Click="DeletePlayers" IconUri="Assets\Dark\delete.png" Text="remove"/>
-            <shell:ApplicationBarIconButton Click="StartCommanderGame" IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" />
-            <shell:ApplicationBarIconButton Click="StartStandardGame" Text="Standard" IconUri="Assets\Dark\like.png" />
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Click="GotoRateInStore" Text="Rate"/>
-                <shell:ApplicationBarMenuItem Click="ResumeGame" Text="Resume Game"/>
+    <!--<Page.BottomAppBar>
+        <AppBar/>-->
+    <!--<AppBarButton Click="DeletePlayers" Content="remove"/>-->
+    <!--<shell:ApplicationBarIconButton Click="StartCommanderGame" IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" />-->
+    <!--<shell:ApplicationBarIconButton Click="StartStandardGame" Text="Standard" IconUri="Assets\Dark\like.png" />-->
+    <!--<shell:ApplicationBar.MenuItems>-->
+    <!--<shell:ApplicationBarMenuItem Click="GotoRateInStore" Text="Rate"/>-->
+    <!--<shell:ApplicationBarMenuItem Click="ResumeGame" Text="Resume Game"/>
                 <shell:ApplicationBarMenuItem Click="SendOwenAnEmail" Text="Send Feedback"/>
                 <shell:ApplicationBarMenuItem Click="GotoBuyInStore" Text="Support this App"/>
-            </shell:ApplicationBar.MenuItems>
-        </AppBar>
-    </Page.ApplicationBar>-->
+            </shell:ApplicationBar.MenuItems></Page.BottomAppBar>-->
 </Page>
