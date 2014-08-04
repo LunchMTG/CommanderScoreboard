@@ -190,7 +190,7 @@
   <ItemGroup>
     <Reference Include="WinRTXamlToolkit, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WinRTXamlToolkit.1.5.2.0\lib\netcore451\WinRTXamlToolkit.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\WinRTXamlToolkit.1.5.2.0\lib\netcore451\WinRTXamlToolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
