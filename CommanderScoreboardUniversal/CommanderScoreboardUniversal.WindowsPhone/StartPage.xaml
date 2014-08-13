@@ -70,9 +70,10 @@
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-            <CheckBox Name="GuestSwitch" Grid.Row="3" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>
-            <Slider Minimum="1" Maximum="4" Value="{Binding GuestCount, Mode=TwoWay}" Grid.Row="4" Visibility="{Binding IsChecked,ElementName=GuestSwitch, Converter={StaticResource bool2Vis}}"></Slider>
-            <TextBox Name="NewPlayerBox" Grid.Row="5" Visibility="{Binding CanResume, Converter={StaticResource bool2Vis}}" KeyDown="NewPlayerBox_KeyDown_1" />
+            <CheckBox Grid.Row="3"/>
+            <CheckBox Name="GuestSwitch" Grid.Row="4" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>
+            <Slider Minimum="1" Maximum="4" Value="{Binding GuestCount, Mode=TwoWay}" Grid.Row="5" Visibility="{Binding IsChecked,ElementName=GuestSwitch, Converter={StaticResource bool2Vis}}"></Slider>
+            <TextBox Name="NewPlayerBox" Grid.Row="6" Visibility="{Binding CanResume, Converter={StaticResource bool2Vis}}" KeyDown="NewPlayerBox_KeyDown_1" />
             <!--<ads:AdControl Grid.Row="6" ApplicationId="7de0ffe4-8f76-4622-82c6-5a06a0153609" AdUnitId="10218652" Height="80" Width="480" Margin="-12,0,-12,-12"  IsAutoCollapseEnabled="True" IsAutoRefreshEnabled="True" Visibility="{Binding IsTrial, Converter={StaticResource bool2Vis}}" ErrorOccurred="AdControl_ErrorOccurred" Keywords="Magic,Cards,Collectibles,Games,Hobby"/>-->
         </Grid>
 
