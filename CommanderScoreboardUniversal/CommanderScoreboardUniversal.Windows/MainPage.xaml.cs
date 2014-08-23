@@ -61,14 +61,16 @@ namespace CommanderScoreboardUniversal
         {
             DataContext = e.Parameter;
 
+            IdlePrevnter = new DisplayRequest();
+            IdlePrevnter.RequestActive();
 
         }
 
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            base.OnNavigatingFrom(e);
             IdlePrevnter.RequestRelease();
+            base.OnNavigatingFrom(e);
         }
 
         private void Previous(object sender, RoutedEventArgs e)
