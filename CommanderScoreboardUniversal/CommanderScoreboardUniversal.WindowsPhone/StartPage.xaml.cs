@@ -7,6 +7,7 @@ using CommanderScoreboardUniversal.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Core;
 using Windows.System;
+using Windows.ApplicationModel.Store;
 
 namespace CommanderScoreboardUniversal
 {
@@ -69,9 +70,9 @@ namespace CommanderScoreboardUniversal
             //}.Show();
         }
 
-        private void GotoBuyInStore(object sender, EventArgs e)
+        private async void GotoBuyInStore(object sender, EventArgs e)
         {
-            //new Microsoft.Phone.Tasks.MarketplaceDetailTask().Show();
+            await CurrentApp.RequestAppPurchaseAsync(false);
         }
 
 
