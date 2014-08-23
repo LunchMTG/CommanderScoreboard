@@ -9,63 +9,63 @@
     mc:Ignorable="d" Background="Black">
     <Page.Resources>
         <ResourceDictionary>
-        <SolidColorBrush x:Key="ListViewItemPlaceholderBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
-        <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="Transparent" />
-        <SolidColorBrush x:Key="ComboBoxItemSelectedBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+            <SolidColorBrush x:Key="ListViewItemPlaceholderBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="Transparent" />
+            <SolidColorBrush x:Key="ComboBoxItemSelectedBackgroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
 
-        <SolidColorBrush x:Key="ListViewItemSelectedForegroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
-        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="Transparent" />
-        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedForegroundThemeBrush" Color="{StaticResource ItemSelectonColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="Transparent" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource ItemSelectonColor}" />
 
-        <Style x:Key="PlayerNameStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="72"/>
-            <Setter Property="Foreground" Value="#f70" />
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="PoisonCounterStyle" TargetType="TextBlock" BasedOn="{StaticResource PlayerNameStyle}">
-            <Setter Property="FontSize" Value="54"/>
-        </Style>
-        <Style x:Key="CommanderCostStyle" TargetType="TextBlock" BasedOn="{StaticResource PoisonCounterStyle}">
-            <!--<Setter Property="Foreground" Value="Gold"/>-->
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="FontSize" Value="54" />
-            <Setter Property="Background" Value="{StaticResource AppAccentColor}" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="FontWeight" Value="Black"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <!--<Setter Property="Foreground" Value="#FFFF2819"/>-->
-        </Style>
-        <Style TargetType="Border">
-            <Setter Property="BorderBrush" Value="Gray"/>
-            <Setter Property="Margin" Value="15"/>
-        </Style>
-        <Style x:Key="LabelStyle" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="26"/>
-            <Setter Property="Foreground" Value="#FF336699"/>
-            <Setter Property="Margin" Value="5"/>
-        </Style>
-        <Style x:Key="CommanderDetailStyle" TargetType="TextBlock" BasedOn="{StaticResource PoisonCounterStyle}">
-            <Setter Property="FontSize" Value="30"/>
+            <Style x:Key="PlayerNameStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="72"/>
+                <Setter Property="Foreground" Value="#f70" />
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="PoisonCounterStyle" TargetType="TextBlock" BasedOn="{StaticResource PlayerNameStyle}">
+                <Setter Property="FontSize" Value="54"/>
+            </Style>
+            <Style x:Key="CommanderCostStyle" TargetType="TextBlock" BasedOn="{StaticResource PoisonCounterStyle}">
+                <!--<Setter Property="Foreground" Value="Gold"/>-->
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="54" />
+                <Setter Property="Background" Value="{StaticResource AppAccentColor}" />
+                <Setter Property="Width" Value="100" />
+                <Setter Property="FontWeight" Value="Black"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <!--<Setter Property="Foreground" Value="#FFFF2819"/>-->
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="BorderBrush" Value="Gray"/>
+                <Setter Property="Margin" Value="15"/>
+            </Style>
+            <Style x:Key="LabelStyle" TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="26"/>
+                <Setter Property="Foreground" Value="#FF336699"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style x:Key="CommanderDetailStyle" TargetType="TextBlock" BasedOn="{StaticResource PoisonCounterStyle}">
+                <Setter Property="FontSize" Value="30"/>
 
-            <!--<Setter Property="Foreground" Value="#FFFF2819"/>-->
-        </Style>
-        <Style TargetType="ListBox">
-            <Setter Property="Background" Value="Transparent"/>
-        </Style>
+                <!--<Setter Property="Foreground" Value="#FFFF2819"/>-->
+            </Style>
+            <Style TargetType="ListBox">
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
 
             <conv:BooleanToVisibilityConverter x:Key="bool2Vis" />
 
             <Style x:Key="BulletsAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
-            <Setter Property="AutomationProperties.AutomationId" Value="BulletsAppBarButton" />
-            <Setter Property="AutomationProperties.Name" Value="New Game" />
-            <Setter Property="Content" Value="&#xE112;" />
-        </Style>
-        <Style x:Key="QMarkAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
-            <Setter Property="AutomationProperties.AutomationId" Value="QMarkAppBarButton" />
-            <Setter Property="AutomationProperties.Name" Value="Coin Flip" />
-            <Setter Property="Content" Value="?" />
+                <Setter Property="AutomationProperties.AutomationId" Value="BulletsAppBarButton" />
+                <Setter Property="AutomationProperties.Name" Value="New Game" />
+                <Setter Property="Content" Value="&#xE112;" />
+            </Style>
+            <Style x:Key="QMarkAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+                <Setter Property="AutomationProperties.AutomationId" Value="QMarkAppBarButton" />
+                <Setter Property="AutomationProperties.Name" Value="Coin Flip" />
+                <Setter Property="Content" Value="?" />
             </Style>
         </ResourceDictionary>
     </Page.Resources>

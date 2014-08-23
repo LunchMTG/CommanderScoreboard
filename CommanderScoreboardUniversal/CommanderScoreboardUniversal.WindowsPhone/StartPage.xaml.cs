@@ -35,33 +35,24 @@ namespace CommanderScoreboardUniversal
             vm.Save();
         }
 
-        private void StartGame(bool isCommander)
+        private void StartGame()
         {
-            var players = vm.Players.Select(name => new Player(isCommander) { Name = name }).ToList();
+            var players = vm.Players.Select(name => new Player(vm.IsCommanderGame) { Name = name }).ToList();
 
             for (int i = 0; i < vm.GuestCount; i++)
-                players.Add(new Player(isCommander) { Name = "guest " + (i + 1) });
+                players.Add(new Player(vm.IsCommanderGame) { Name = "guest " + (i + 1) });
 
             _game = new Game
              {
-                 IsCommanderGame = isCommander,
-                 Players = new System.Collections.ObjectModel.ObservableCollection<Player>(players)
+                 IsCommanderGame = vm.IsCommanderGame,
+                 ShowPoisonControls = vm.ShowPoisonControls,
+                 Players = new System.Collections.ObjectModel.ObservableCollection<Player>(players),
              };
 
             if (_game.Players.Any())
             {
                 Frame.Navigate(typeof(MainPage), _game);
             }
-        }
-
-        private void StartStandardGame(object sender, EventArgs e)
-        {
-            StartGame(false);
-        }
-
-        private void StartCommanderGame(object sender, EventArgs e)
-        {
-            StartGame(true);
         }
 
         private void GotoRateInStore(object sender, EventArgs e)
@@ -106,6 +97,11 @@ namespace CommanderScoreboardUniversal
                 AddPlayer(sender, EventArgs.Empty);
                 e.Handled = true;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StartGame();
         }
     }
 }

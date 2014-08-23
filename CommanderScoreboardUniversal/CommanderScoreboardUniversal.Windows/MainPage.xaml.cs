@@ -61,8 +61,7 @@ namespace CommanderScoreboardUniversal
         {
             DataContext = e.Parameter;
 
-            IdlePrevnter = new DisplayRequest();
-            IdlePrevnter.RequestActive();
+
         }
 
 

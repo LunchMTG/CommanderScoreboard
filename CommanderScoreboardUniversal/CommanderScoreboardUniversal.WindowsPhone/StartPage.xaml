@@ -51,29 +51,38 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Friends"/>
-            <GridView Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" Margin="24,12 " >
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VariableSizedWrapGrid />
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}" FontSize="42" Margin="12,5"/>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
-            <CheckBox Grid.Row="3"/>
-            <CheckBox Name="GuestSwitch" Grid.Row="4" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>
+            <ScrollViewer Grid.Row="1" Margin="12,24">
+                <GridView Name="PlayerListBox" SelectionMode="Multiple" FontSize="42" ItemsSource="{Binding AvailablePlayers}" SelectionChanged="ListBox_SelectionChanged">
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" FontSize="42" Margin="12,5"/>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </ScrollViewer>
+            <StackPanel Grid.Row="3" Orientation="Horizontal">
+                <ToggleButton IsChecked="{Binding IsCommanderGame, Mode=TwoWay}">Commander</ToggleButton>
+                <ToggleButton IsChecked="{Binding ShowPoisonControls, Mode=TwoWay}">Poison</ToggleButton>
+                <ToggleButton Name="GuestSwitch" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled}"/>
+            </StackPanel>
+            <!--<CheckBox Name="GuestSwitch" Grid.Row="4" Content="{Binding GuestCountText}" IsChecked="{Binding GuestsEnabled,Mode=TwoWay}"/>-->
             <Slider Minimum="1" Maximum="4" Value="{Binding GuestCount, Mode=TwoWay}" Grid.Row="5" Visibility="{Binding IsChecked,ElementName=GuestSwitch, Converter={StaticResource bool2Vis}}"></Slider>
             <TextBox Name="NewPlayerBox" Grid.Row="6" Visibility="{Binding CanResume, Converter={StaticResource bool2Vis}}" KeyDown="NewPlayerBox_KeyDown_1" />
+            <Button Grid.Row="7" HorizontalAlignment="Stretch" Command="{Binding }" Click="Button_Click">Start New Game</Button>
             <!--<ads:AdControl Grid.Row="6" ApplicationId="7de0ffe4-8f76-4622-82c6-5a06a0153609" AdUnitId="10218652" Height="80" Width="480" Margin="-12,0,-12,-12"  IsAutoCollapseEnabled="True" IsAutoRefreshEnabled="True" Visibility="{Binding IsTrial, Converter={StaticResource bool2Vis}}" ErrorOccurred="AdControl_ErrorOccurred" Keywords="Magic,Cards,Collectibles,Games,Hobby"/>-->
         </Grid>
 
@@ -86,14 +95,16 @@
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </Grid>
     <!--<Page.BottomAppBar>
-        <AppBar/>-->
-    <!--<AppBarButton Click="DeletePlayers" Content="remove"/>-->
-    <!--<shell:ApplicationBarIconButton Click="StartCommanderGame" IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" />-->
-    <!--<shell:ApplicationBarIconButton Click="StartStandardGame" Text="Standard" IconUri="Assets\Dark\like.png" />-->
-    <!--<shell:ApplicationBar.MenuItems>-->
-    <!--<shell:ApplicationBarMenuItem Click="GotoRateInStore" Text="Rate"/>-->
-    <!--<shell:ApplicationBarMenuItem Click="ResumeGame" Text="Resume Game"/>
-                <shell:ApplicationBarMenuItem Click="SendOwenAnEmail" Text="Send Feedback"/>
-                <shell:ApplicationBarMenuItem Click="GotoBuyInStore" Text="Support this App"/>
-            </shell:ApplicationBar.MenuItems></Page.BottomAppBar>-->
+        <AppBar>
+            <AppBarButton Click="DeletePlayers" Content="remove"/>
+            <AppBarButton Click="StartCommanderGame" IconUri="Assets\Dark\CommanderSymbol.png" Text="edh" />
+            <AppBarButton Click="StartStandardGame" Text="Standard" IconUri="Assets\Dark\like.png" />
+            <AppBar.MenuItems>
+                <ApplicationBarMenuItem Click="GotoRateInStore" Text="Rate"/>
+                <ApplicationBarMenuItem Click="ResumeGame" Text="Resume Game"/>
+                <ApplicationBarMenuItem Click="SendOwenAnEmail" Text="Send Feedback"/>
+                <ApplicationBarMenuItem Click="GotoBuyInStore" Text="Support this App"/>
+            </AppBar.MenuItems>
+        </AppBar>
+    </Page.BottomAppBar>-->
 </Page>
