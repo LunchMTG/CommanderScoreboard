@@ -74,10 +74,12 @@
                             <Viewbox  StretchDirection="DownOnly" Grid.Row="0">
                                 <TextBlock Text="{Binding Name}" Style="{StaticResource PlayerNameStyle}" />
                             </Viewbox>
-                            <TextBlock Text="{Binding LifeText}" Style="{StaticResource PlayerNameStyle}" Grid.Row="1" />
+                            <Viewbox Grid.Row="1" StretchDirection="DownOnly">
+                                <TextBlock Text="{Binding LifeText}" Style="{StaticResource PlayerNameStyle}" />
+                            </Viewbox>
                             <TextBlock Text="{Binding PoisonText}" Style="{StaticResource PoisonCounterStyle}" Grid.Row="2" Visibility="{Binding HasPoison, Converter={StaticResource bool2Vis}}"/>
                             <TextBlock Text="{Binding CommanderText}" Style="{StaticResource CommanderCostStyle}" Grid.Row="3" Visibility="{Binding HasCastedCommander, Converter={StaticResource bool2Vis}}"/>
-                            <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" Height="Auto" Visibility="{Binding IsCommanderGame, Converter={StaticResource bool2Vis}}">
+                            <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" Height="Auto">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Viewbox StretchDirection="DownOnly" Height="65">
@@ -107,6 +109,11 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="Margin" Value="5,0"/>
+                        </Style>
+                    </Grid.Resources>
                     <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}">Life Total</TextBlock>
                     <Border Grid.Column="0" Grid.Row="1">
                         <StackPanel Orientation="Horizontal">
