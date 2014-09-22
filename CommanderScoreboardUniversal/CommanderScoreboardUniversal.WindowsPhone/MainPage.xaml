@@ -12,7 +12,7 @@
         <conv:BooleanToVisibilityConverter x:Key="bool2Vis" />
         <Style x:Key="PlayerNameStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="72"/>
-            <Setter Property="Foreground" Value="#f70" />
+            <Setter Property="Foreground" Value="{ThemeResource ApplicationForegroundThemeBrush}" />
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
         <Style x:Key="PoisonCounterStyle" TargetType="TextBlock" BasedOn="{StaticResource PlayerNameStyle}">
@@ -27,7 +27,7 @@
         <Style x:Key="LabelStyle" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="26"/>
-            <Setter Property="Foreground" Value="#FF336699"/>
+            <Setter Property="Foreground" Value="{ThemeResource ApplicationForegroundThemeBrush}"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
         <Style TargetType="Button">
@@ -63,33 +63,35 @@
                 </GridView.ItemsPanel>
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="10,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Viewbox  StretchDirection="DownOnly" Grid.Row="0">
-                                <TextBlock Text="{Binding Name}" Style="{StaticResource PlayerNameStyle}" />
-                            </Viewbox>
-                            <Viewbox Grid.Row="1" StretchDirection="DownOnly">
-                                <TextBlock Text="{Binding LifeText}" Style="{StaticResource PlayerNameStyle}" />
-                            </Viewbox>
-                            <TextBlock Text="{Binding PoisonText}" Style="{StaticResource PoisonCounterStyle}" Grid.Row="2" Visibility="{Binding HasPoison, Converter={StaticResource bool2Vis}}"/>
-                            <TextBlock Text="{Binding CommanderText}" Style="{StaticResource CommanderCostStyle}" Grid.Row="3" Visibility="{Binding HasCastedCommander, Converter={StaticResource bool2Vis}}"/>
-                            <ItemsControl ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" Height="Auto">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Viewbox StretchDirection="DownOnly" Height="65">
-                                            <TextBlock Style="{StaticResource CommanderDetailStyle}"  Text="{Binding DisplayText}" />
-                                        </Viewbox>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                            <Border Background="#AA121212" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2Vis}}" Grid.RowSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        </Grid>
+                        <Viewbox>
+                            <Grid Margin="10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Viewbox  StretchDirection="DownOnly" Grid.Row="0">
+                                    <TextBlock Text="{Binding Name}" Style="{StaticResource PlayerNameStyle}" />
+                                </Viewbox>
+                                <Viewbox Grid.Row="1" StretchDirection="DownOnly">
+                                    <TextBlock Text="{Binding LifeText}" Style="{StaticResource PlayerNameStyle}" />
+                                </Viewbox>
+                                <TextBlock Text="{Binding PoisonText}" Style="{StaticResource PoisonCounterStyle}" Grid.Row="2" Visibility="{Binding HasPoison, Converter={StaticResource bool2Vis}}"/>
+                                <TextBlock Text="{Binding CommanderText}" Style="{StaticResource CommanderCostStyle}" Grid.Row="3" Visibility="{Binding HasCastedCommander, Converter={StaticResource bool2Vis}}"/>
+                                <ListBox ItemsSource="{Binding CommanderDamage}"  Grid.Row="4" Height="Auto">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Viewbox StretchDirection="DownOnly" Height="65">
+                                                <TextBlock Style="{StaticResource CommanderDetailStyle}"  Text="{Binding DisplayText}" />
+                                            </Viewbox>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ListBox>
+                                <Border Background="#AA121212" Visibility="{Binding IsProbablyDead, Converter={StaticResource bool2Vis}}" Grid.RowSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </Viewbox>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
