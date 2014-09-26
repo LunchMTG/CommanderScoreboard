@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/LunchMTG/CommanderScoreboard.png?label=ready&title=Ready)](https://waffle.io/LunchMTG/CommanderScoreboard)
 [![Stories in Ready](https://badge.waffle.io/owen2/commanderscoreboard.png?label=ready&title=Ready)](https://waffle.io/owen2/commanderscoreboard)
 CommanderScoreboard
 ===================
